@@ -42,9 +42,11 @@
         color="white"
         @click="toggleSearch"
       >
-        Search
+        <span
+          :class="{'hidden-sm-and-down': $vuetify.breakpoint.xs || $vuetify.breakpoint.sm}"
+        >Search</span>
         <v-icon right>
-          menu
+          search
         </v-icon>
       </v-btn>
     </v-toolbar-items>
@@ -54,6 +56,7 @@
 <script>
 /* eslint-disable vue/no-use-v-if-with-v-for */
   import { EventBus } from '@/event-bus.js'
+
   export default {
 
     methods: {
@@ -72,5 +75,3 @@
     },
   }
 </script>
-
-<style lang="scss" scoped></style>
