@@ -27,6 +27,7 @@
               v-for="(item, index) in queryResults"
               :key="index"
               class="mb-4"
+              @click="closeDrawer"
             >
               <a
                 :href="`${item.download}`"
@@ -78,9 +79,12 @@
       }
     },
     methods: {
+      closeDrawer() {
+        this.drawer=false
+      },
       instantSearch () {
         // console.log(this.query)
-        this.queryResults = this.fuse.search(this.query)
+        this.queryResults = this.fuse.search(this.query).slice(0, 100)
         // console.log(this.fuse.search(this.query))
       },
     },
