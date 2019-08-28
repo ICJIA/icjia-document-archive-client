@@ -31,7 +31,7 @@
               <a
                 :href="`${item.download}`"
                 target="_blank"
->{{ item.name }}</a>
+              >{{ item.name }}</a>
               <div
 
                 style="font-size: 12px; font-weight: bold"
@@ -69,9 +69,13 @@
       EventBus.$on('toggleSearch', () => {
         this.drawer = !this.drawer
       })
-      let searchContent = await fetchData('https://archive.icjia-api.cloud/files/searchIndex.json')
-      this.fuse = new Fuse(searchContent, this.$store.getters.config.search)
-      // console.log(searchContent)
+      try {
+        let searchContent = await fetchData('https://archive.icjia.cloud/files/searchIndex.json')
+        this.fuse = new Fuse(searchContent, this.$store.getters.config.search)
+        console.log('SearchIndex fetched successfully.')
+      } catch (e) {
+        console.log('SearchIndex error: ', e)
+      }
     },
     methods: {
       instantSearch () {
