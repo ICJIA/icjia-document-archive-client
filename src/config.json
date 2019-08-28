@@ -1,6 +1,6 @@
 {
   "archiveURL": "https://archive.icjia.cloud",
-  
+
   "search": {
     "shouldSort": true,
     "threshold": 0.5,
@@ -8,11 +8,9 @@
     "distance": 100,
     "maxPatternLength": 32,
     "minMatchCharLength": 2,
-    "keys": [
-      "name",
-      "path"
-    ]
+    "keys": ["name", "path"]
   },
+  "maxSearchResults": 100,
   "markdownIt": {
     "html": true,
     "xhtmlOut": false,

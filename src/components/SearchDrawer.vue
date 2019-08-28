@@ -18,11 +18,14 @@
               label="Search ICJIA Archive by Filename"
               placeholder="Start typing..."
               @keyup="instantSearch"
+              :clearable="true"
+              @click:clear="reset()"
+              
             />
           </v-form>
         </v-col>
         <v-col cols="12">
-          <div v-if="query.length">
+          <div v-if="query">
             <div
               v-for="(item, index) in queryResults"
               :key="index"
@@ -48,49 +51,55 @@
 </template>
 
 <script>
-  import Fuse from 'fuse.js'
-  import { EventBus } from '@/event-bus'
-  async function fetchData (endpoint) {
-    // eslint-disable-next-line no-unused-vars
-    let data
-    let response = await fetch(endpoint)
-    return (data = await response.json())
+import Fuse from "fuse.js";
+import { EventBus } from "@/event-bus";
+async function fetchData(endpoint) {
+  // eslint-disable-next-line no-unused-vars
+  let data;
+  let response = await fetch(endpoint);
+  return (data = await response.json());
+}
+export default {
+  data() {
+    return {
+      drawer: false,
+      query: "",
+      queryResults: [],
+      content: "",
+      showPath: false
+    };
+  },
+  async created() {
+    EventBus.$on("toggleSearch", () => {
+      this.drawer = !this.drawer;
+    });
+    try {
+      let searchContent = await fetchData(
+        "https://archive.icjia.cloud/files/searchIndex.json"
+      );
+      this.fuse = new Fuse(searchContent, this.$store.getters.config.search);
+      console.log("SearchIndex fetched successfully.");
+    } catch (e) {
+      console.log("SearchIndex error: ", e);
+    }
+  },
+  methods: {
+    closeDrawer() {
+      this.drawer = false;
+    },
+    reset() {
+      this.queryResults = [];
+    },
+    instantSearch() {
+      // console.log(this.query)
+      this.queryResults = this.fuse
+        .search(this.query)
+        .slice(0, this.$store.getters.config.maxSearchResults);
+      // console.log(this.fuse.search(this.query))
+    }
   }
-  export default {
-    data () {
-      return {
-        drawer: false,
-        query: '',
-        queryResults: [],
-        content: '',
-        showPath: false,
-      }
-    },
-    async created () {
-      EventBus.$on('toggleSearch', () => {
-        this.drawer = !this.drawer
-      })
-      try {
-        let searchContent = await fetchData('https://archive.icjia.cloud/files/searchIndex.json')
-        this.fuse = new Fuse(searchContent, this.$store.getters.config.search)
-        console.log('SearchIndex fetched successfully.')
-      } catch (e) {
-        console.log('SearchIndex error: ', e)
-      }
-    },
-    methods: {
-      closeDrawer() {
-        this.drawer=false
-      },
-      instantSearch () {
-        // console.log(this.query)
-        this.queryResults = this.fuse.search(this.query).slice(0, 100)
-        // console.log(this.fuse.search(this.query))
-      },
-    },
-  }
+};
 </script>
 
 <style lang="scss" scoped>
-
 </style>
