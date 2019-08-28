@@ -13,6 +13,18 @@
       >
         <v-col cols="12">
           <v-form class="pl-2">
+            <div class="text-right">
+              <v-btn
+                small
+                depressed
+                class="mb-6"
+                @click="closeDrawer()"
+              >
+                CLOSE<v-icon right>
+                  close
+                </v-icon>
+              </v-btn>
+            </div>
             <v-text-field
               ref="textfield"
               v-model="query"
