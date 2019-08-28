@@ -1,0 +1,48 @@
+<template>
+  <div>
+    <v-container>
+      <v-row>
+        <v-col cols="12">
+          <agency-card
+            path="/files/adult-redeploy"
+            title="Adult Redeploy Illinois"
+            :content="ariContent"
+          />
+          <agency-card
+            path="/files/icjia"
+            title="Illinois Criminal Justice Information Authority"
+            logo="icjia-logo-125.png"
+            :width="125"
+            :height="75"
+            :content="icjiaContent"
+          />
+          <agency-card
+            path="/files/spac"
+            title="Illinois Sentencing Policy and Advisory Council"
+            logo="spac-default.png"
+            :width="66"
+            :height="100"
+            :content="icjiaContent"
+          />
+        </v-col>
+      </v-row>
+    </v-container>
+  </div>
+</template>
+
+<script>
+  import AgencyCard from '@/components/AgencyCard'
+
+  export default {
+    components: {
+      AgencyCard,
+    },
+    data () {
+      return {
+        ariContent: 'Lorem markdownum Minervae habebat? Haut ferax murum deos Medusae sepulcro, raptam repulsa instabilemque Maeoniam nec, a tympana, suo pande',
+        icjiaContent: 'Lorem markdownum Minervae habebat? Haut ferax murum deos Medusae sepulcro, raptam repulsa instabilemque Maeoniam nec, a tympana, suo pande',
+        spacContent: 'Lorem markdownum Minervae habebat? Haut ferax murum deos Medusae sepulcro, raptam repulsa instabilemque Maeoniam nec, a tympana, suo pande',
+      }
+    },
+  }
+</script>
