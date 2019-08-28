@@ -1,7 +1,7 @@
 <template>
   <v-app>
     <app-nav />
-    <search-drawer />
+    <!-- <search-drawer /> -->
     <v-content>
       <router-view />
     </v-content>
@@ -20,6 +20,16 @@
     data: () => ({
     //
     }),
+    async created () {
+      if (!this.$store.state.isAppReady) {
+        const configPromise = process.BROWSER_BUILD
+          ? import('@/config.json')
+          : Promise.resolve(require('@/config.json'))
+        let config = await configPromise
+        this.$store.dispatch('setConfig', config)
+        this.$store.dispatch('init')
+      }
+    },
     mounted () {
       if (process.env.NODE_ENV === 'development') {
       }
