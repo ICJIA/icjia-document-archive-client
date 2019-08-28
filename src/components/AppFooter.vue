@@ -8,6 +8,47 @@
       flat
       tile
       class="white--text text-center"
+      color="secondary"
+      style="width: 100%"
+    >
+      <v-card-text>
+        <v-btn
+          to="/files/adult-redeploy"
+          depressed
+          class="heavy "
+          dark
+          color="secondary"
+          aria-label="ARI archive"
+        >
+          <span style="font-size: 12px">ARI archive</span>
+        </v-btn>
+
+        <v-btn
+          to="/files/icjia"
+          depressed
+          class="heavy "
+          dark
+          color="secondary"
+          aria-label="ICJIA archive"
+        >
+          <span style="font-size: 12px">ICJIA archive</span>
+        </v-btn>
+        <v-btn
+          to="/files/spac"
+          depressed
+          class="heavy "
+          dark
+          color="secondary"
+          aria-label="SPAC archive"
+        >
+          <span style="font-size: 12px">SPAC archive</span>
+        </v-btn>
+      </v-card-text>
+    </v-card>
+    <v-card
+      flat
+      tile
+      class="white--text text-center"
       color="primary"
       style="width: 100%"
     >
@@ -80,5 +121,9 @@
 
 .footer-link:hover {
   color: #aaa !important;
+}
+
+.heavy {
+    font-weight: 900 !important;
 }
 </style>

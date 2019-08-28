@@ -29,9 +29,9 @@
       "
     >
       <span
-        style="font-weight: 900"
+        style="font-weight: 900; cursor: pointer"
         class="agency"
-      >DOCUMENT ARCHIVE</span>
+      ><span :class="{'hidden-sm-and-down': $vuetify.breakpoint.xs || $vuetify.breakpoint.sm}">DOCUMENT</span> ARCHIVE</span>
     </v-toolbar-title>
 
     <div class="flex-grow-1" />
