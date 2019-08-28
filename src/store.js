@@ -6,17 +6,9 @@ import Vuex from 'vuex'
 
 Vue.use(Vuex)
 
-async function fetchData (endpoint) {
-  // eslint-disable-next-line no-unused-vars
-  let data
-  let response = await fetch(endpoint)
-  return (data = await response.json())
-}
-
 export default new Vuex.Store({
   state: {
     config: null,
-    searchContent: () => [],
     isAppReady: false,
   },
   mutations: {
@@ -28,6 +20,7 @@ export default new Vuex.Store({
       state.config = config
       console.log('Config loaded')
     },
+
   },
   actions: {
     setConfig ({ commit }, config) {
@@ -35,8 +28,6 @@ export default new Vuex.Store({
     },
     async init ({ commit }) {
       try {
-        let searchContent = await fetchData('https://archive.icjia-api.cloud/files/searchIndex.json')
-        console.log('Sarch: ', searchContent)
         commit('SET_APP_READY', true)
       } catch (e) {
         console.log(e)
@@ -45,9 +36,7 @@ export default new Vuex.Store({
     },
   },
   getters: {
-    searchContent: state => {
-      return state.searchContent
-    },
+
     config: state => {
       return state.config
     },

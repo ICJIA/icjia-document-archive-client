@@ -31,12 +31,12 @@
               <a
                 :href="`${item.download}`"
                 target="_blank"
-              >{{ item.name }}</a>
+>{{ item.name }}</a>
               <div
-                v-if="showPath"
-                style="font-size: 12px"
+
+                style="font-size: 12px; font-weight: bold"
               >
-                /{{ item.path }}
+                {{ item.path }}
               </div>
             </div>
           </div>
@@ -49,6 +49,12 @@
 <script>
   import Fuse from 'fuse.js'
   import { EventBus } from '@/event-bus'
+  async function fetchData (endpoint) {
+    // eslint-disable-next-line no-unused-vars
+    let data
+    let response = await fetch(endpoint)
+    return (data = await response.json())
+  }
   export default {
     data () {
       return {
@@ -61,10 +67,11 @@
     },
     async created () {
       EventBus.$on('toggleSearch', () => {
-        this.drawer = true
+        this.drawer = !this.drawer
       })
-
-      this.fuse = new Fuse(this.$store.getters.searchContent, this.$store.getters.config.search)
+      let searchContent = await fetchData('https://archive.icjia-api.cloud/files/searchIndex.json')
+      this.fuse = new Fuse(searchContent, this.$store.getters.config.search)
+      // console.log(searchContent)
     },
     methods: {
       instantSearch () {

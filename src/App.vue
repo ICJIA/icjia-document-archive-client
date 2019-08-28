@@ -1,7 +1,7 @@
 <template>
   <v-app>
     <app-nav />
-    <!-- <search-drawer /> -->
+    <search-drawer />
     <v-content>
       <router-view />
     </v-content>
