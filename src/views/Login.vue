@@ -32,7 +32,7 @@
               :items="items"
               :rules="agencyRules"
               filled
-              label="Select agency"
+              label="Select authentication agency"
               class="mt-3"
             />
 
