@@ -38,7 +38,7 @@ router.beforeEach((to, from, next) => {
       next()
       return
     }
-    // store.dispatch('logout').then(router.push('/login'))
+    store.dispatch('logout').then(router.push('/login'))
     next('/login')
   } else {
     next()
