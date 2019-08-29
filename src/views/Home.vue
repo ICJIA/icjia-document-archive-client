@@ -46,15 +46,15 @@
         icjiaContent: 'Lorem markdownum Minervae habebat? Haut ferax murum deos Medusae sepulcro, raptam repulsa instabilemque Maeoniam nec, a tympana, suo pande',
         spacContent: 'Lorem markdownum Minervae habebat? Haut ferax murum deos Medusae sepulcro, raptam repulsa instabilemque Maeoniam nec, a tympana, suo pande',
         ariButtons: [
-          { url: '/files/redeploy', icon: 'arrow_right', text: 'Browse Archive' },
-          { url: 'http://www.icjia.state.il.us/adult-redeploy', icon: 'open_in_new', text: 'Website' },
+          { url: '/files/adult-redeploy', icon: 'arrow_right', text: 'Browse Archive' },
+          { url: 'http://www.icjia.state.il.us/redeploy', icon: 'open_in_new', text: 'Website' },
         ],
         icjiaButtons: [
           { url: '/files/icjia', icon: 'arrow_right', text: 'Browse Archive' },
           { url: 'http://www.icjia.state.il.us', icon: 'open_in_new', text: 'Website' },
         ],
         spacButtons: [
-          { url: '/files/icjia', icon: 'arrow_right', text: 'Browse Archive' },
+          { url: '/files/spac', icon: 'arrow_right', text: 'Browse Archive' },
           { url: 'http://www.icjia.state.il.us/spac', icon: 'open_in_new', text: 'Website' },
         ],
       }
