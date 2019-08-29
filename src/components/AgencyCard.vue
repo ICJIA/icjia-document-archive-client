@@ -27,7 +27,7 @@
           </div>
           <v-list-item-content>
             <v-list-item-title
-              class="headline mb-1"
+              class="headline mt-3 mb-1"
               style="font-weight: 700"
             >
               {{ title }}
