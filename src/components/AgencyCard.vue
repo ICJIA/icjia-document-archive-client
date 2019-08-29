@@ -13,7 +13,7 @@
         <v-list-item three-line>
           <div
             style="width: 150px;"
-            class="hidden-sm-and-down"
+            class="hidden-sm-and-down text-center"
           >
             <v-list-item-avatar
               tile
@@ -36,6 +36,25 @@
             <div v-html="content" />
           </v-list-item-content>
         </v-list-item>
+        <v-card-actions>
+          <v-spacer />
+
+          <div v-if="buttons.length">
+            <v-btn
+              v-for="(button, index) in buttons"
+              :key="index"
+              :href="button.url"
+
+              small
+              depressed
+            >
+              {{ button.text }}
+              <v-icon right>
+                {{ button.icon }}
+              </v-icon>
+            </v-btn>
+          </div>
+        </v-card-actions>
       </v-card>
     </v-hover>
   </div>
@@ -68,6 +87,10 @@
         type: String,
         default: '',
       },
+      buttons: {
+        type: Array,
+        default: () => [],
+      },
     },
     mounted () {
 
@@ -80,6 +103,6 @@
   }
 </script>
 
-<style lang="scss" scoped>
+<style >
 
 </style>
