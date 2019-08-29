@@ -40,6 +40,18 @@
       <v-btn
         depressed
         color="white"
+        to="/upload"
+      >
+        <span
+          :class="{'hidden-sm-and-down': $vuetify.breakpoint.xs || $vuetify.breakpoint.sm}"
+        >Upload</span>
+        <v-icon right>
+          cloud_upload
+        </v-icon>
+      </v-btn>
+      <v-btn
+        depressed
+        color="white"
         @click="toggleSearch"
       >
         <span
@@ -48,6 +60,18 @@
         <v-icon right>
           search
         </v-icon>
+      </v-btn>
+
+      <v-btn
+        v-if="$store.getters.isLoggedIn"
+        depressed
+        color="white"
+        @click="logout"
+      >
+        <span
+          :class="{'hidden-sm-and-down': $vuetify.breakpoint.xs || $vuetify.breakpoint.sm}"
+          style="color: blue"
+        >LOGOUT</span>
       </v-btn>
     </v-toolbar-items>
   </v-app-bar>
@@ -63,6 +87,10 @@
       toggleSearch () {
         console.log('sendToggle')
         EventBus.$emit('toggleSearch')
+      },
+      logout () {
+        this.$store.dispatch('logout')
+        this.$router.push('/')
       },
       logoWidth () {
         // console.log(this.$vuetify.breakpoint);

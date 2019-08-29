@@ -40,19 +40,35 @@
           <v-spacer />
 
           <div v-if="buttons.length">
-            <v-btn
+            <span
               v-for="(button, index) in buttons"
               :key="index"
-              :href="button.url"
+            >&nbsp;&nbsp;
+              <v-btn
+                v-if="button.routing === 'remote'"
+                :href="button.url"
 
-              small
-              depressed
-            >
-              {{ button.text }}
-              <v-icon right>
-                {{ button.icon }}
-              </v-icon>
-            </v-btn>
+                small
+                depressed
+              >
+                {{ button.text }}
+                <v-icon right>
+                  {{ button.icon }}
+                </v-icon>
+              </v-btn>
+              <v-btn
+                v-else
+                :to="`${button.url}`"
+
+                small
+                depressed
+              >
+                {{ button.text }}
+                <v-icon right>
+                  {{ button.icon }}
+                </v-icon>
+              </v-btn>
+            </span>
           </div>
         </v-card-actions>
       </v-card>

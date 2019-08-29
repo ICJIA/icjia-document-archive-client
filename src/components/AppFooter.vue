@@ -13,7 +13,7 @@
     >
       <v-card-text>
         <v-btn
-          :href="`${$store.getters.config.archiveURL}/files/adult-redeploy`"
+          :href="`/files/adult-redeploy`"
           depressed
           class="heavy "
           dark
@@ -24,7 +24,7 @@
         </v-btn>
 
         <v-btn
-          :href="`${$store.getters.config.archiveURL}/files/icjia`"
+          :href="`/files/icjia`"
           depressed
           class="heavy "
           dark
@@ -34,7 +34,7 @@
           <span style="font-size: 12px">ICJIA archive</span>
         </v-btn>
         <v-btn
-          :href="`${$store.getters.config.archiveURL}/files/spac`"
+          :href="`/files/spac`"
           depressed
           class="heavy "
           dark
