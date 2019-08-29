@@ -66,16 +66,18 @@ export default new Vuex.Store({
     async login ({ commit, state }, payload) {
       let identifier = payload.identifier
       let password = payload.password
+      let agency = payload.agency
 
-      // Request API.
-      return await axios
-        .post('https://spacbeta.icjia-api.cloud/auth/local', {
+      let auth = state.config.auth[agency].url
+      return new Promise((resolve, reject) => {
+       axios
+        .post(auth, {
           identifier: `${identifier}`,
           password: `${password}`,
         })
         .then(response => {
           // Handle success.
-          console.log('Well done!')
+
           console.log('User profile', response.data.user)
           console.log('User token', response.data.jwt)
           const jwt = response.data.jwt
@@ -83,11 +85,16 @@ export default new Vuex.Store({
           localStorage.setItem('jwt', jwt)
           localStorage.setItem('userMeta', JSON.stringify(userMeta))
           commit('AUTH_SUCCESS', { jwt, userMeta })
+          resolve(response)
         })
         .catch(error => {
           // Handle error.
-          console.log('An error occurred:', error)
+          let message = error
+          commit('AUTH_ERROR', message)
+          // console.log('An error occurred:', error)
+          reject(error)
         })
+      })
     },
   },
   getters: {

@@ -3,7 +3,7 @@
     <v-container v-if="!$store.getters.isLoggedIn">
       <v-flex>
         <v-card
-          class="mx-auto mt-12 py-10 px-10"
+          class="mx-auto mt-12 mb-12 py-10 px-10"
           style="max-width: 500px;"
         >
           <v-form
@@ -57,22 +57,37 @@
               </v-btn>
             </div>
           </v-form>
+          <div class="text-center">
+            <v-alert
+              :value="alert"
+              outlined
+              type="error"
+              class="mt-5"
+              style="max-width: 500px; color: red !important;"
+            >
+              {{ msg }}
+            </v-alert>
+          </div>
         </v-card>
       </v-flex>
     </v-container>
     <v-container v-else>
       <v-flex>
         <v-card
-          class="mx-auto mt-3 py-3 text-center"
+          class="mx-auto mt-12 py-3 text-center"
           style="max-width: 500px;"
         >
           <v-card-text>You're already logged in.</v-card-text>
-          <v-btn @click="logout">
+          <v-btn
+            dark
+            color="blue"
+            @click="logout"
+          >
             Logout
           </v-btn>
-          <div class="mt-3">
+          <div class="mt-12">
             <router-link to="/upload">
-              Go to upload
+              Go to file upload&nbsp;&raquo;
             </router-link>
           </div>
         </v-card>
@@ -82,11 +97,15 @@
 </template>
 
 <script>
+  import { EventBus } from '@/event-bus'
+
   export default {
     data: () => ({
+      alert: false,
       valid: true,
+      msg: '',
       username: '',
-      items: ['adult-redeploy', 'icjia', 'spac'],
+      items: ['adult-redeploy', 'spac'],
       usernameRules: [
         v => !!v || 'Username is required',
       ],
@@ -102,7 +121,13 @@
       select: null,
 
     }),
-
+    mounted () {
+      EventBus.$on('error', msg => {
+        this.msg = msg
+        this.alert = true
+        console.log('error: ', msg)
+      })
+    },
     methods: {
       validate () {
         if (this.$refs.form.validate()) {
@@ -123,6 +148,8 @@
       },
       reset () {
         this.$refs.form.reset()
+        this.alert = false
+        this.msg = ''
       },
 
     },

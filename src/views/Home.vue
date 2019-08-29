@@ -42,7 +42,7 @@
     },
     data () {
       return {
-        ariContent: 'Lorem markdownum Minervae habebat? Haut ferax murum deos Medusae sepulcro, raptam repulsa instabilemque Maeoniam nec, a tympana, suo pande',
+        ariContent: 'Adult Redeploy Illinois was established by the Crime Reduction Act (Public Act 96-0761) to provide financial incentives to local jurisdictions for programs that allow diversion of non-violent offenders from state prisons by providing community-based services. Grants are provided to counties, groups of counties, and judicial circuits to increase programming in their areas, in exchange for reducing the number of people they send to the Illinois Department of Corrections. ',
         icjiaContent: 'Lorem markdownum Minervae habebat? Haut ferax murum deos Medusae sepulcro, raptam repulsa instabilemque Maeoniam nec, a tympana, suo pande',
         spacContent: 'Lorem markdownum Minervae habebat? Haut ferax murum deos Medusae sepulcro, raptam repulsa instabilemque Maeoniam nec, a tympana, suo pande',
         ariButtons: [

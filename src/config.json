@@ -10,6 +10,14 @@
     "minMatchCharLength": 2,
     "keys": ["name", "path"]
   },
+  "auth": {
+    "adult-redeploy": {
+      "url": "https://ari.icjia-api.cloud/auth/local"
+    },
+    "spac": {
+      "url": "https://spacbeta.icjia-api.cloud/auth/local"
+    }
+  },
   "maxSearchResults": 100,
   "markdownIt": {
     "html": true,
