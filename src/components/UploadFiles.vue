@@ -70,7 +70,7 @@
       </v-card>
       <v-card v-if="failedUploads.length">
         <v-card-title class="red lighten-4">
-          File(s) already exist. Not uploaded:
+          Already exists. Not uploaded:
         </v-card-title>
         <v-card-text class="red lighten-4">
           <ul>
@@ -89,9 +89,9 @@
 
           @click="reset()"
         >
-          Upload more files
+          Upload more
           <v-icon right>
-            cached
+            autorenew
           </v-icon>
         </v-btn>
       </div>
@@ -121,6 +121,22 @@
           </v-btn>
         </div>
       </div>
+    </div>
+    <div
+      v-if="isSaving"
+      class="text-center mt-8"
+    >
+      <v-card>
+        <v-card-title>
+          Uploading ...
+          <v-progress-circular
+            :size="70"
+            :width="7"
+            color="purple"
+            indeterminate
+          />
+        </v-card-title>
+      </v-card>
     </div>
   </div>
 </template>
