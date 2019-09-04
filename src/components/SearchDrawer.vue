@@ -47,14 +47,20 @@
               <a
                 :href="`${item.download}`"
                 target="_blank"
-                class="dont-break-out"
+                class="dont-break-out name"
               >{{ item.name }}</a>
               <div
 
                 style="font-size: 12px; font-weight: bold"
-                class="dont-break-out"
+                class="dont-break-out "
               >
-                {{ removeFilename(item.path, item.name) }}
+                <a
+                  :href="`https://archive.icjia.cloud/files${item.path}`"
+                  class="path"
+                  target="_blank"
+                >
+                  {{ removeFilename(item.path, item.name) }}
+                </a>
               </div>
             </div>
           </div>
@@ -97,9 +103,9 @@
     mounted () {
       EventBus.$on('toggleSearch', () => {
         this.drawer = !this.drawer
-        this.$nextTick(() => {
-          this.$refs.textfield.focus()
-        })
+        // this.$nextTick(() => {
+        //   this.$refs.textfield.focus()
+        // })
       })
     },
     methods: {
@@ -131,5 +137,9 @@
   }
 </script>
 
-<style lang="scss" scoped>
+<style>
+.name {color: #3949AB !important;}
+.name:hover {color: #888 !important;}
+.path {color: #333 !important;}
+.path:hover {color: #888 !important;}
 </style>
