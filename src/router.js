@@ -14,6 +14,14 @@ const router = new Router({
       component: Home,
     },
     {
+      path: '/sandbox',
+      name: 'sandbox',
+      component: () =>
+        import(/* webpackChunkName: "sandbox" */ './views/Sandbox.vue'),
+
+    },
+
+    {
       path: '/upload',
       name: 'upload',
       component: () =>

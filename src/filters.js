@@ -1,3 +1,4 @@
+// eslint-disable-next-line no-unused-vars
 import Vue from 'vue'
 
 // const slug = require("slug");
