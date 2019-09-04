@@ -8,7 +8,7 @@
             title="Adult Redeploy Illinois"
             :content="ariContent"
             :buttons="ariButtons"
-          />
+/>
           <agency-card
             path="/files/icjia"
             title="Illinois Criminal Justice Information Authority"
@@ -17,7 +17,7 @@
             :height="75"
             :content="icjiaContent"
             :buttons="icjiaButtons"
-          />
+/>
           <agency-card
             path="/files/spac"
             title="Illinois Sentencing Policy and Advisory Council"
@@ -26,7 +26,7 @@
             :height="100"
             :content="spacContent"
             :buttons="spacButtons"
-          />
+/>
         </v-col>
       </v-row>
     </v-container>
@@ -47,18 +47,18 @@
         spacContent: '<p>SPAC was created to collect, analyze and present data from all relevant sources to more accurately determine the consequences of sentencing policy decisions and to review the effectiveness and efficiency of current sentencing policies and practices.</p><p>The purpose of SPAC is to review sentencing policies and practices and examine how those policies and practices impact the criminal justice system as a whole in the State of Illinois.</p>',
         ariButtons: [
 
-          { url: '/files/adult-redeploy', icon: 'arrow_right', text: 'Browse Archive', routing: 'remote' },
+          { url: '/files/adult-redeploy', icon: 'arrow_right', text: 'Browse ARI Archive', routing: 'remote' },
           { url: 'http://www.icjia.state.il.us/redeploy', icon: 'open_in_new', text: 'Visit Website', routing: 'remote' },
 
         ],
         icjiaButtons: [
 
-          { url: '/files/icjia', icon: 'arrow_right', text: 'Browse Archive', routing: 'remote' },
+          { url: '/files/icjia', icon: 'arrow_right', text: 'Browse ICJIA Archive', routing: 'remote' },
           { url: 'http://www.icjia.state.il.us', icon: 'open_in_new', text: 'Visit Website', routing: 'remote' },
         ],
         spacButtons: [
 
-          { url: '/files/spac', icon: 'arrow_right', text: 'Browse Archive', routing: 'remote' },
+          { url: '/files/spac', icon: 'arrow_right', text: 'Browse SPAC Archive', routing: 'remote' },
           { url: 'http://www.icjia.state.il.us/spac', icon: 'open_in_new', text: 'Visit Website', routing: 'remote' },
         ],
       }

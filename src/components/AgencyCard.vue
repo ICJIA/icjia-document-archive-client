@@ -83,6 +83,10 @@
         type: String,
         default: 'state-seal-color.png',
       },
+      abbreviation: {
+        type: String,
+        default: '',
+      },
       title: {
         type: String,
         default: 'Title here',
