@@ -144,7 +144,9 @@
         }
       },
       logout () {
-        this.$store.dispatch('logout')
+        this.$store.dispatch('logout').then(res => {
+          console.log(res)
+        })
       },
       reset () {
         this.$refs.form.reset()
