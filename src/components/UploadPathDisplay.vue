@@ -23,8 +23,20 @@
           Upload directory:&nbsp;&nbsp;<span
             style="background: #ddd; font-weight: bold"
             class="py-1 px-1"
-          >{{ path }}/</span>
-          <v-spacer />
+          >{{ path }}</span>
+        </v-col>
+        <v-col cols="6">
+          <div
+
+            class="text-right"
+          >
+            <v-btn @click="getArchiveURL()">
+              Browse at current path
+              <v-icon right>
+                open_in_new
+              </v-icon>
+            </v-btn>
+          </div>
         </v-col>
       </v-row>
     </v-container>
@@ -36,15 +48,12 @@
   export default {
     props: {
 
-    //   path: {
-    //     type: String,
-    //     default: 'root/',
-    //   },
     },
     data () {
       return {
-        path: 'root',
+        path: 'root/',
         uploadPathAllowed: false,
+        currentStatus: null,
       }
     },
     mounted () {
@@ -54,6 +63,16 @@
       EventBus.$on('uploadPathAllowed', (bool) => {
         this.uploadPathAllowed = bool
       })
+      EventBus.$on('currentStatus', (currentStatus) => {
+        this.currentStatus = currentStatus
+      })
+    },
+    methods: {
+      getArchiveURL () {
+        let path = this.path.replace('root/', '')
+        let url = `https://archive.icjia.cloud/${path}`
+        window.open(url, '_blank')
+      },
     },
   }
 </script>

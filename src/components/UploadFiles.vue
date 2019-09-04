@@ -1,15 +1,12 @@
 <template>
   <div>
-    <div v-if="uploadPathAllowed">
+    <div v-if="isInitial || isSaving">
       <form
-        v-if="isInitial || isSaving "
-
+        v-if="uploadPathAllowed"
         enctype="multipart/form-data"
         novalidate
         style="min-height: 200px"
       >
-        <!-- Path: {{ path }} -->
-
         <div class="dropbox">
           <input
             ref="path"
@@ -40,24 +37,97 @@
           </p>
         </div>
       </form>
+      <div
+        v-if="!uploadPathAllowed"
+
+        style="min-height: 200px"
+      >
+        <v-card>
+          <v-card-text
+            class="text-center"
+            style="font-weight: 900"
+          >
+            Select valid upload path.
+          </v-card-text>
+        </v-card>
+      </div>
     </div>
-    <div
-      v-else
-      style="min-height: 200px"
-    >
-      <v-card>
-        <v-card-text
-          class="text-center"
-          style="font-weight: 900"
-        >
-          Select valid upload path.
+    <div v-if="isSuccess">
+      <v-card v-if="successfulUploads.length">
+        <v-card-title class="green lighten-4">
+          Successfully uploaded:
+        </v-card-title>
+        <v-card-text class="green lighten-4">
+          <ul>
+            <li
+              v-for="(upload, index) in successfulUploads"
+              :key="index"
+            >
+              {{ upload }}
+            </li>
+          </ul>
         </v-card-text>
       </v-card>
+      <v-card v-if="failedUploads.length">
+        <v-card-title class="red lighten-4">
+          File(s) already exist. Not uploaded:
+        </v-card-title>
+        <v-card-text class="red lighten-4">
+          <ul>
+            <li
+              v-for="(upload, index) in failedUploads"
+              :key="index"
+            >
+              {{ upload }}
+            </li>
+          </ul>
+        </v-card-text>
+      </v-card>
+
+      <div class="text-center mt-8">
+        <v-btn
+
+          @click="reset()"
+        >
+          Upload more files
+          <v-icon right>
+            cached
+          </v-icon>
+        </v-btn>
+      </div>
+    </div>
+
+    <div
+      v-if="isFailed"
+      class="text-center mt-4"
+    >
+      <div class="text-center">
+        <v-alert
+          type="error"
+          class="mt-4 mb-4"
+        >
+          <pre>{{ uploadError }}</pre>
+        </v-alert>
+        <h2>Upload failed.</h2>
+        <div class="text-center mt-8">
+          <v-btn
+
+            @click="reset()"
+          >
+            Try again
+            <v-icon right>
+              cached
+            </v-icon>
+          </v-btn>
+        </div>
+      </div>
     </div>
   </div>
 </template>
 
 <script>
+  import { upload } from '@/services/upload'
+
   import { EventBus } from '@/event-bus'
   const STATUS_INITIAL = 0
   const STATUS_SAVING = 1
@@ -66,14 +136,15 @@
   export default {
     data () {
       return {
-        path: 'root',
+        path: 'root/',
         currentStatus: null,
         uploadFieldName: 'files',
+        uploadError: null,
       }
     },
     computed: {
       uploadPathAllowed () {
-        if (this.path === 'root' || this.path === 'root/files') {
+        if (this.path === 'root/' || this.path === 'root/files/') {
           return false
         } else {
           return true
@@ -99,21 +170,46 @@
       uploadPathAllowed (newValue, oldValue) {
         EventBus.$emit('uploadPathAllowed', newValue)
       },
+      currentStatus (newValue, oldValue) {
+        EventBus.$emit('currentStatus', newValue)
+      },
     },
     mounted () {
+      this.reset()
       EventBus.$on('path', (path) => {
         this.path = path
       })
       EventBus.$emit('uploadPathAllowed', false)
-
-      this.reset()
+      EventBus.$emit('currentStatus', this.currentStatus)
     },
     methods: {
+      save (formData) {
+        // upload data to the server
+
+        this.currentStatus = STATUS_SAVING
+        // this.currentStatus = STATUS_SUCCESS
+
+        upload(formData)
+          .then(x => {
+            this.allFiles = x.allFiles
+            this.successfulUploads = x.successfulUploads
+            this.failedUploads = x.failedUploads
+            this.currentStatus = STATUS_SUCCESS
+            EventBus.$emit('currentStatus', this.currentStatus)
+          })
+          .catch(err => {
+            this.uploadError = err
+            this.currentStatus = STATUS_FAILED
+            EventBus.$emit('currentStatus', this.currentStatus)
+          })
+      },
       reset () {
         // reset form to initial state
         this.currentStatus = STATUS_INITIAL
         this.uploadedFiles = []
         this.uploadError = null
+        EventBus.$emit('currentStatus', this.currentStatus)
+        EventBus.$emit('path', 'root/')
       },
       filesChange (fieldName, fileList) {
         // handle file changes
@@ -129,8 +225,8 @@
         formData.append('path', this.$refs.path.value)
         formData.append('uploadToken', this.$refs.uploadToken.value)
         // save it
-        console.log([...formData])
-        // this.save(formData)
+        // console.log([...formData])
+        this.save(formData)
       },
     },
   }

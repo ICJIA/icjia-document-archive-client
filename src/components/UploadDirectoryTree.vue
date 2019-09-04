@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div v-if="currentStatus === 0 || currentStatus === 1">
     <v-card id="treeviewBox">
       <v-treeview
         v-model="tree"
@@ -56,11 +56,21 @@
       return {
         open: [],
         tree: [],
+        currentStatus: null,
       }
+    },
+    mounted () {
+      EventBus.$on('currentStatus', (currentStatus) => {
+        this.currentStatus = currentStatus
+      })
     },
     methods: {
       getPath (item) {
-        EventBus.$emit('path', item.path)
+        let path = item.path
+        if (path.substr(-1) !== '/') {
+          path += '/'
+        }
+        EventBus.$emit('path', path)
       },
     },
 
