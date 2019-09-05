@@ -31,7 +31,7 @@
                   Filter search by agency:
                   <br>
 
-                  <span style="font-weight: 900">{{ getName() }}</span>
+                  <span style="font-weight: 900; color: #0C4473">{{ getName() }}</span>
 
                   <v-radio-group
                     v-model="agency"
@@ -72,6 +72,12 @@
           </v-form>
         </v-col>
         <v-col cols="12">
+          <div
+            v-if="!queryResults.length && hasSearched"
+            class="text-center"
+          >
+            No results
+          </div>
           <div v-if="query">
             <div
               v-for="(item, index) in queryResults"
@@ -119,6 +125,7 @@
       return {
         drawer: false,
         query: '',
+        hasSearched: false,
         agency: 'all',
         queryResults: [],
         content: '',
@@ -187,6 +194,7 @@
       },
       reset () {
         this.queryResults = []
+        this.hasSearched = false
       },
       filter (agency) {
         if (agency === 'all') {
@@ -202,9 +210,11 @@
       },
       instantSearch () {
         // console.log(this.query)
+
         this.queryResults = this.fuse
           .search(this.query)
           .slice(0, this.$store.getters.config.maxSearchResults)
+        this.hasSearched = true
       // console.log(this.fuse.search(this.query))
       },
     },
