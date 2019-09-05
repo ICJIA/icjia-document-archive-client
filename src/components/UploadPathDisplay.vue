@@ -46,9 +46,7 @@
 <script>
   import { EventBus } from '@/event-bus'
   export default {
-    props: {
-
-    },
+    props: {},
     data () {
       return {
         path: 'root/',
@@ -57,13 +55,13 @@
       }
     },
     mounted () {
-      EventBus.$on('path', (path) => {
+      EventBus.$on('path', path => {
         this.path = path
       })
-      EventBus.$on('uploadPathAllowed', (bool) => {
+      EventBus.$on('uploadPathAllowed', bool => {
         this.uploadPathAllowed = bool
       })
-      EventBus.$on('currentStatus', (currentStatus) => {
+      EventBus.$on('currentStatus', currentStatus => {
         this.currentStatus = currentStatus
       })
     },
@@ -78,20 +76,16 @@
 </script>
 
 <style>
-
 .hover {
-  cursor: pointer
+  cursor: pointer;
 }
 
 #path {
   background: #eee;
   font-weight: bold;
-
 }
 #pathBox {
   font-size: 16px;
   background: #ddd;
-
 }
-
 </style>

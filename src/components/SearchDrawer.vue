@@ -15,9 +15,11 @@
           <v-form class="pl-2">
             <div class="text-right">
               <v-btn
+
                 small
-                depressed
+                color="blue darken-4"
                 class="mb-6"
+                dark
                 @click="closeDrawer()"
               >
                 CLOSE<v-icon right>
@@ -28,7 +30,7 @@
             <v-card class="grey lighten-4">
               <v-card-text style="color: #111">
                 <div class="flex-center">
-                  Filter search by agency:
+                  Filter results by agency:
                   <br>
 
                   <span style="font-weight: 900; color: #0C4473">{{ getName() }}</span>
@@ -83,20 +85,19 @@
               v-for="(item, index) in queryResults"
               :key="index"
               class="mb-4"
-              @click="closeDrawer"
             >
               <a
                 :href="`${item.download}`"
                 target="_blank"
                 class="dont-break-out name"
-              >{{ item.name }}</a>
+              >{{ item.name }}</a> <span style="font-size: 12px; color: #666;">&nbsp;({{ formatBytes(item.stats.size) }})</span>
               <div
 
                 style="font-size: 12px; font-weight: bold"
                 class="dont-break-out "
               >
                 <a
-                  :href="`https://archive.icjia.cloud/files${item.path}`"
+                  :href="`${item.parent}`"
                   class="path"
                   target="_blank"
                 >
@@ -133,7 +134,10 @@
         masterSearchContent: null,
         filteredSearchContent: null,
         agencyMap: [
-          { name: 'Illinois Criminal Justice Information Authority', agency: 'icjia' },
+          {
+            name: 'Illinois Criminal Justice Information Authority',
+            agency: 'icjia',
+          },
           { name: 'Adult Redeploy Illinois', agency: 'adult-redeploy' },
           { name: 'Illinois Sentencing Policy Advisory Council', agency: 'spac' },
         ],
@@ -151,7 +155,10 @@
           'https://archive.icjia.cloud/files/searchIndex.json'
         )
         this.masterSearchContent = searchContent
-        this.fuse = new Fuse(this.masterSearchContent, this.$store.getters.config.search)
+        this.fuse = new Fuse(
+          this.masterSearchContent,
+          this.$store.getters.config.search
+        )
         console.log('SearchIndex fetched successfully.')
       } catch (e) {
         console.log('SearchIndex error: ', e)
@@ -160,9 +167,9 @@
     mounted () {
       EventBus.$on('toggleSearch', () => {
         this.drawer = !this.drawer
-        // this.$nextTick(() => {
-        //   this.$refs.textfield.focus()
-        // })
+      // this.$nextTick(() => {
+      //   this.$refs.textfield.focus()
+      // })
       })
     },
     methods: {
@@ -174,7 +181,7 @@
           return 'All Agencies'
         }
 
-        let agency = this.agencyMap.filter((item) => {
+        let agency = this.agencyMap.filter(item => {
           if (item.agency === this.agency) {
             return item
           }
@@ -192,19 +199,36 @@
           return '40%'
         }
       },
+      formatBytes (bytes, decimals = 2) {
+        if (bytes === 0) return '0 Bytes'
+
+        const k = 1024
+        const dm = decimals < 0 ? 0 : decimals
+        const sizes = ['Bytes', 'KB', 'MB', 'GB', 'TB', 'PB', 'EB', 'ZB', 'YB']
+
+        const i = Math.floor(Math.log(bytes) / Math.log(k))
+
+        return parseFloat((bytes / Math.pow(k, i)).toFixed(dm)) + ' ' + sizes[i]
+      },
       reset () {
         this.queryResults = []
         this.hasSearched = false
       },
       filter (agency) {
         if (agency === 'all') {
-          this.fuse = new Fuse(this.masterSearchContent, this.$store.getters.config.search)
+          this.fuse = new Fuse(
+            this.masterSearchContent,
+            this.$store.getters.config.search
+          )
           this.instantSearch()
         } else {
-          let filteredSearchContent = this.masterSearchContent.filter((item) => {
+          let filteredSearchContent = this.masterSearchContent.filter(item => {
             return item.agency === agency
           })
-          this.fuse = new Fuse(filteredSearchContent, this.$store.getters.config.search)
+          this.fuse = new Fuse(
+            filteredSearchContent,
+            this.$store.getters.config.search
+          )
           this.instantSearch()
         }
       },
@@ -222,13 +246,21 @@
 </script>
 
 <style>
-.name {color: #3949AB !important;}
-.name:hover {color: #888 !important;}
-.path {color: #333 !important;}
-.path:hover {color: #888 !important;}
+.name {
+  color: #3949ab !important;
+}
+.name:hover {
+  color: #888 !important;
+}
+.path {
+  color: #333 !important;
+}
+.path:hover {
+  color: #888 !important;
+}
 .flex-center {
   display: flex;
   flex-direction: column;
   align-items: center;
-  }
+}
 </style>
