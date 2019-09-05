@@ -33,7 +33,14 @@
             Drag your file(s) here <br> or click to browse
           </p>
           <p v-if="isSaving">
-            Uploading {{ fileCount }} files...
+            Uploading {{ fileCount }} files...<br>
+            <v-progress-circular
+              :size="40"
+              :width="7"
+              color="purple"
+              indeterminate
+              class="mt-5"
+            />
           </p>
         </div>
       </form>
@@ -121,22 +128,6 @@
           </v-btn>
         </div>
       </div>
-    </div>
-    <div
-      v-if="isSaving"
-      class="text-center mt-8"
-    >
-      <v-card>
-        <v-card-title>
-          Uploading ...
-          <v-progress-circular
-            :size="70"
-            :width="7"
-            color="purple"
-            indeterminate
-          />
-        </v-card-title>
-      </v-card>
     </div>
   </div>
 </template>

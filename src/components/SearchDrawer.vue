@@ -25,10 +25,45 @@
                 </v-icon>
               </v-btn>
             </div>
+            <v-card class="grey lighten-4">
+              <v-card-text style="color: #111">
+                <div class="flex-center">
+                  Filter search by agency:
+                  <br>
+
+                  <span style="font-weight: 900">{{ getName() }}</span>
+
+                  <v-radio-group
+                    v-model="agency"
+                    row
+                    class="mb-5 "
+                  >
+                    <v-radio
+                      label="All"
+                      value="all"
+                    />
+                    <v-radio
+                      label="ARI"
+                      value="adult-redeploy"
+                    />
+                    <v-radio
+                      label="ICJIA"
+                      value="icjia"
+                    />
+                    <v-radio
+                      label="SPAC"
+                      value="spac"
+                    />
+                  </v-radio-group>
+                </div>
+              </v-card-text>
+            </v-card>
+
             <v-text-field
               ref="textfield"
               v-model="query"
-              label="Search ICJIA Archive by Filename"
+              class="mt-10"
+              label="Search document archive by filename"
               placeholder="Start typing..."
               :clearable="true"
               @keyup="instantSearch"
@@ -84,17 +119,32 @@
       return {
         drawer: false,
         query: '',
+        agency: 'all',
         queryResults: [],
         content: '',
         showPath: false,
+        masterSearchContent: null,
+        filteredSearchContent: null,
+        agencyMap: [
+          { name: 'Illinois Criminal Justice Information Authority', agency: 'icjia' },
+          { name: 'Adult Redeploy Illinois', agency: 'adult-redeploy' },
+          { name: 'Illinois Sentencing Policy Advisory Council', agency: 'spac' },
+        ],
       }
+    },
+    watch: {
+      agency (newValue, oldValue) {
+        // this.queryResults = []
+        this.filter(newValue)
+      },
     },
     async created () {
       try {
         let searchContent = await fetchData(
           'https://archive.icjia.cloud/files/searchIndex.json'
         )
-        this.fuse = new Fuse(searchContent, this.$store.getters.config.search)
+        this.masterSearchContent = searchContent
+        this.fuse = new Fuse(this.masterSearchContent, this.$store.getters.config.search)
         console.log('SearchIndex fetched successfully.')
       } catch (e) {
         console.log('SearchIndex error: ', e)
@@ -112,6 +162,18 @@
       closeDrawer () {
         this.drawer = false
       },
+      getName () {
+        if (this.agency === 'all') {
+          return 'All Agencies'
+        }
+
+        let agency = this.agencyMap.filter((item) => {
+          if (item.agency === this.agency) {
+            return item
+          }
+        })
+        return agency[0].name
+      },
       removeFilename (path, name) {
         let newPath = path.replace(name, '')
         return newPath
@@ -125,6 +187,18 @@
       },
       reset () {
         this.queryResults = []
+      },
+      filter (agency) {
+        if (agency === 'all') {
+          this.fuse = new Fuse(this.masterSearchContent, this.$store.getters.config.search)
+          this.instantSearch()
+        } else {
+          let filteredSearchContent = this.masterSearchContent.filter((item) => {
+            return item.agency === agency
+          })
+          this.fuse = new Fuse(filteredSearchContent, this.$store.getters.config.search)
+          this.instantSearch()
+        }
       },
       instantSearch () {
         // console.log(this.query)
@@ -142,4 +216,9 @@
 .name:hover {color: #888 !important;}
 .path {color: #333 !important;}
 .path:hover {color: #888 !important;}
+.flex-center {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  }
 </style>

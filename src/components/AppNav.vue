@@ -85,7 +85,6 @@
 
     methods: {
       toggleSearch () {
-        console.log('sendToggle')
         EventBus.$emit('toggleSearch')
       },
       logout () {
