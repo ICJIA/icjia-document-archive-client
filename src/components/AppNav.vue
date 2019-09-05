@@ -41,6 +41,7 @@
         depressed
         color="white"
         to="/upload"
+        class="hidden-sm-and-down"
       >
         <span
           :class="{'hidden-sm-and-down': $vuetify.breakpoint.xs || $vuetify.breakpoint.sm}"
@@ -54,9 +55,7 @@
         color="white"
         @click="toggleSearch"
       >
-        <span
-          :class="{'hidden-sm-and-down': $vuetify.breakpoint.xs || $vuetify.breakpoint.sm}"
-        >Search</span>
+        <span>Search</span>
         <v-icon right>
           search
         </v-icon>
