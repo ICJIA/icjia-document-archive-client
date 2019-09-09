@@ -1,9 +1,9 @@
 import * as axios from 'axios'
 
-const BASE_URL = 'http://localhost:3000'
+const BASE_URL = 'http://localhost:5150'
 
 function upload (formData) {
-    const url = `${BASE_URL}/`
+    const url = `${BASE_URL}/upload`
     return axios.post(url, formData)
         // get data
         .then(x => { console.log('response', x); return x.data })
