@@ -30,6 +30,7 @@ const router = new Router({
         requiresAuth: true,
       },
     },
+    { path: '/uploadFile', redirect: { name: 'upload' } },
     {
       path: '/login',
       name: 'login',
