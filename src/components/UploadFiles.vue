@@ -188,6 +188,7 @@
       })
       EventBus.$emit('uploadPathAllowed', false)
       EventBus.$emit('currentStatus', this.currentStatus)
+      EventBus.$emit('rebuildSearchIndex')
     },
     methods: {
       save (formData) {
@@ -203,6 +204,7 @@
             this.failedUploads = x.failedUploads
             this.currentStatus = STATUS_SUCCESS
             EventBus.$emit('currentStatus', this.currentStatus)
+            EventBus.$emit('rebuildSearchIndex')
           })
           .catch(err => {
             this.uploadError = err

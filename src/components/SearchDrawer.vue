@@ -150,31 +150,35 @@
       },
     },
     async created () {
-      try {
-        let searchContent = await fetchData(
-          'https://archive.icjia.cloud/searchIndex.json'
-        )
-        this.masterSearchContent = searchContent
-        this.fuse = new Fuse(
-          this.masterSearchContent,
-          this.$store.getters.config.search
-        )
-        console.log('SearchIndex fetched successfully.')
-      } catch (e) {
-        console.log('SearchIndex error: ', e)
-      }
+      await this.getSearchIndex()
     },
     mounted () {
       EventBus.$on('toggleSearch', () => {
         this.drawer = !this.drawer
-      // this.$nextTick(() => {
-      //   this.$refs.textfield.focus()
-      // })
+      })
+      EventBus.$on('rebuildSearchIndex', async () => {
+        await this.getSearchIndex()
+        console.log('search index rebuilt')
       })
     },
     methods: {
       closeDrawer () {
         this.drawer = false
+      },
+      async getSearchIndex () {
+        try {
+          let searchContent = await fetchData(
+            'https://archive.icjia.cloud/searchIndex.json'
+          )
+          this.masterSearchContent = searchContent
+          this.fuse = new Fuse(
+            this.masterSearchContent,
+            this.$store.getters.config.search
+          )
+          console.log('SearchIndex fetched successfully.')
+        } catch (e) {
+          console.log('SearchIndex error: ', e)
+        }
       },
       getName () {
         if (this.agency === 'all') {
