@@ -33,7 +33,6 @@
 </template>
 
 <script>
-
   import UploadPathDisplay from '@/components/UploadPathDisplay'
   import UploadDirectoryTree from '@/components/UploadDirectoryTree'
   import UploadFiles from '@/components/UploadFiles'
@@ -48,7 +47,6 @@
       UploadPathDisplay,
       UploadDirectoryTree,
       UploadFiles,
-
     },
     data: () => ({
       loading: true,
@@ -61,7 +59,7 @@
       try {
         this.loading = true
         let directoryTree = await fetchData(
-          'https://archive.icjia.cloud/files/directoryTree.json'
+          'https://archive.icjia.cloud/utils/directoryTree.json'
         )
         console.log('directoryTree fetched successfully.')
         this.items.push(directoryTree)
@@ -71,17 +69,14 @@
         this.loading = false
       }
     },
-
   }
 </script>
 
 <style>
 .hover {
-  cursor: pointer
+  cursor: pointer;
 }
 
 #uploadPage {
-
 }
-
 </style>

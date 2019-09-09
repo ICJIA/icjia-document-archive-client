@@ -1,3 +1,4 @@
 /files/*    https://archive.icjia-api.cloud/files/:splat  200
-/utils/*    https://archive.icjia-api.cloud/utils/:splat  200
+/utils/*    https://archive.icjia-api.cloud/files/:splat  200
+/check      https://archive.icjia-api.cloud/:splat  200
 /*          /index.html 200
