@@ -1,4 +1,5 @@
 /files/*    https://archive.icjia-api.cloud/files/:splat  200
 /utils/*    https://archive.icjia-api.cloud/files/:splat  200
 /check      https://archive.icjia-api.cloud/check  200
+/sitemap.xml      https://archive.icjia-api.cloud/sitemap.xml  200
 /*          /index.html 200
