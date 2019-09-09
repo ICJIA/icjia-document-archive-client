@@ -44,11 +44,11 @@ export default new Vuex.Store({
     },
   },
   actions: {
-    setConfig ({ commit }, config) {
-      commit('SET_CONFIG', config)
-    },
+
     async init ({ commit }) {
       try {
+        let appConfig = require('@/config.json')
+        commit('SET_CONFIG', appConfig)
         commit('SET_APP_READY', true)
       } catch (e) {
         console.log(e)

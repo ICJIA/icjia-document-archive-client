@@ -1,7 +1,7 @@
 <template>
   <div>
     <v-container v-if="!$store.getters.isLoggedIn">
-      <v-flex>
+      <v-col>
         <v-card
           class="mx-auto mt-12 mb-12 py-10 px-10"
           style="max-width: 500px;"
@@ -69,10 +69,10 @@
             </v-alert>
           </div>
         </v-card>
-      </v-flex>
+      </v-col>
     </v-container>
     <v-container v-else>
-      <v-flex>
+      <v-col>
         <v-card
           class="mx-auto mt-12 py-3 text-center"
           style="max-width: 500px;"
@@ -91,7 +91,7 @@
             </router-link>
           </div>
         </v-card>
-      </v-flex>
+      </v-col>
     </v-container>
   </div>
 </template>

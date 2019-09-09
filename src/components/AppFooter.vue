@@ -13,7 +13,7 @@
     >
       <v-card-text>
         <v-btn
-          :href="`/files/adult-redeploy`"
+          :href="`${archiveURL}/files/adult-redeploy`"
           depressed
           class="heavy "
           dark
@@ -24,7 +24,7 @@
         </v-btn>
 
         <v-btn
-          :href="`/files/icjia`"
+          :href="`${archiveURL}/files/icjia`"
           depressed
           class="heavy "
           dark
@@ -34,7 +34,7 @@
           <span style="font-size: 12px">ICJIA archive</span>
         </v-btn>
         <v-btn
-          :href="`/files/spac`"
+          :href="`${archiveURL}/files/spac`"
           depressed
           class="heavy "
           dark
@@ -103,9 +103,11 @@
     },
     data: () => ({
       icons: ['fab fa-facebook', 'fab fa-twitter'],
+      archiveURL: '',
     }),
+
     mounted () {
-    // console.log(process.env);
+      this.archiveURL = this.$store.getters.config.archiveURL
     },
     methods: {
 

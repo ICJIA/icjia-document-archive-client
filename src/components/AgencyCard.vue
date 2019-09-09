@@ -117,7 +117,8 @@
     },
     methods: {
       gotoFolder (path) {
-        location.href = `${path}`
+        // console.log(`${this.$store.getters.config.archiveURL}`)
+        location.href = `${this.$store.getters.config.archiveURL}${path}`
       },
     },
   }
