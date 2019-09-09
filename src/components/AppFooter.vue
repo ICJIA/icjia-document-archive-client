@@ -34,6 +34,16 @@
           <span style="font-size: 12px">ICJIA archive</span>
         </v-btn>
         <v-btn
+          :href="`${archiveURL}/files/ifvcc`"
+          depressed
+          class="heavy "
+          dark
+          color="secondary"
+          aria-label="IFVCC archive"
+        >
+          <span style="font-size: 12px">IFVCC archive</span>
+        </v-btn>
+        <v-btn
           :href="`${archiveURL}/files/spac`"
           depressed
           class="heavy "

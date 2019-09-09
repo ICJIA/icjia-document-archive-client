@@ -53,6 +53,10 @@
                       value="icjia"
                     />
                     <v-radio
+                      label="IFVCC"
+                      value="ifvcc"
+                    />
+                    <v-radio
                       label="SPAC"
                       value="spac"
                     />
@@ -139,6 +143,7 @@
             agency: 'icjia',
           },
           { name: 'Adult Redeploy Illinois', agency: 'adult-redeploy' },
+          { name: 'Illinois Family Violence Coordinating Councils', agency: 'ifvcc' },
           { name: 'Illinois Sentencing Policy Advisory Council', agency: 'spac' },
         ],
       }
