@@ -87,7 +87,7 @@
               class="mb-4"
             >
               <a
-                :href="`${item.download}`"
+                :href="`${item.url}`"
                 target="_blank"
                 class="dont-break-out name"
               >{{ item.name }}</a> <span style="font-size: 12px; color: #666;">&nbsp;({{ formatBytes(item.stats.size) }})</span>
