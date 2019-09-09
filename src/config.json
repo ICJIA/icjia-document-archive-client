@@ -18,7 +18,7 @@
       "url": "https://spacbeta.icjia-api.cloud/auth/local"
     }
   },
-  "maxSearchResults": 100,
+  "maxSearchResults": 200,
   "markdownIt": {
     "html": true,
     "xhtmlOut": false,
