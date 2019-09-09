@@ -152,7 +152,7 @@
     async created () {
       try {
         let searchContent = await fetchData(
-          'https://archive.icjia.cloud/utils/searchIndex.json'
+          'https://archive.icjia.cloud/searchIndex.json'
         )
         this.masterSearchContent = searchContent
         this.fuse = new Fuse(

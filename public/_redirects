@@ -2,4 +2,7 @@
 /utils/*    https://archive.icjia-api.cloud/files/:splat  200
 /check      https://archive.icjia-api.cloud/check  200
 /sitemap.xml      https://archive.icjia-api.cloud/sitemap.xml  200
+/searchIndex.json      https://archive.icjia-api.cloud/searchIndex.json  200
+/directoryTree.json      https://archive.icjia-api.cloud/directoryTree.json  200
+/upload      https://archive.icjia-api.cloud/upload  200
 /*          /index.html 200
