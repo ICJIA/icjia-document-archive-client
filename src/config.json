@@ -1,6 +1,6 @@
 {
   "archiveURL": "https://archive.icjia.cloud",
-
+  "publicPath": "/archive",
   "search": {
     "shouldSort": true,
     "threshold": 0.5,
