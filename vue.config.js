@@ -1,4 +1,7 @@
+const config = require('@/config.json')
+
 module.exports = {
+  publicPath: process.env.NODE_ENV === `production` ? config.publicPath : '/',
     transpileDependencies: ['vuetify'],
     css: {
       loaderOptions: {
