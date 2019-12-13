@@ -59,7 +59,7 @@
       try {
         this.loading = true
         let directoryTree = await fetchData(
-          'https://archive.icjia.cloud/directoryTree.json'
+          'https://archive.icjia-api.cloud/directoryTree.json',
         )
         console.log('directoryTree fetched successfully.')
         this.items.push(directoryTree)

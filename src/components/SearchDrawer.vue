@@ -173,12 +173,12 @@
       async getSearchIndex () {
         try {
           let searchContent = await fetchData(
-            'https://archive.icjia.cloud/searchIndex.json'
+            'https://archive.icjia-api.cloud/searchIndex.json',
           )
           this.masterSearchContent = searchContent
           this.fuse = new Fuse(
             this.masterSearchContent,
-            this.$store.getters.config.search
+            this.$store.getters.config.search,
           )
           console.log('SearchIndex fetched successfully.')
         } catch (e) {
@@ -227,7 +227,7 @@
         if (agency === 'all') {
           this.fuse = new Fuse(
             this.masterSearchContent,
-            this.$store.getters.config.search
+            this.$store.getters.config.search,
           )
           this.instantSearch()
         } else {
@@ -236,7 +236,7 @@
           })
           this.fuse = new Fuse(
             filteredSearchContent,
-            this.$store.getters.config.search
+            this.$store.getters.config.search,
           )
           this.instantSearch()
         }

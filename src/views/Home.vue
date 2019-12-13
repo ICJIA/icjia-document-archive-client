@@ -57,24 +57,24 @@
         spacContent: '<p>SPAC was created to collect, analyze and present data from all relevant sources to more accurately determine the consequences of sentencing policy decisions and to review the effectiveness and efficiency of current sentencing policies and practices.</p><p>The purpose of SPAC is to review sentencing policies and practices and examine how those policies and practices impact the criminal justice system as a whole in the State of Illinois.</p>',
         ariButtons: [
 
-          { url: `${this.$store.getters.config.archiveURL}/files/adult-redeploy`, icon: 'arrow_right', text: 'Browse ARI Archive', routing: 'remote' },
-          { url: 'http://www.icjia.state.il.us/redeploy', icon: 'open_in_new', text: 'Visit Website', routing: 'remote' },
+          { url: `${this.$store.getters.config.fileServerURL}/files/adult-redeploy`, icon: 'arrow_right', text: 'Browse ARI Archive', routing: 'remote' },
+          { url: 'https://icjia.illinois.gov/adultredeploy', icon: 'open_in_new', text: 'Visit Website', routing: 'remote' },
 
         ],
         icjiaButtons: [
 
-          { url: `${this.$store.getters.config.archiveURL}/files/icjia`, icon: 'arrow_right', text: 'Browse ICJIA Archive', routing: 'remote' },
+          { url: `${this.$store.getters.config.fileServerURL}/files/icjia`, icon: 'arrow_right', text: 'Browse ICJIA Archive', routing: 'remote' },
           { url: 'http://www.icjia.state.il.us', icon: 'open_in_new', text: 'Visit Website', routing: 'remote' },
         ],
         ifvccButtons: [
 
-          { url: `${this.$store.getters.config.archiveURL}/files/ifvcc`, icon: 'arrow_right', text: 'Browse IFVCC Archive', routing: 'remote' },
+          { url: `${this.$store.getters.config.fileServerURL}/files/ifvcc`, icon: 'arrow_right', text: 'Browse IFVCC Archive', routing: 'remote' },
           { url: 'http://www.icjia.state.il.us/ifvcc', icon: 'open_in_new', text: 'Visit Website', routing: 'remote' },
         ],
         spacButtons: [
 
-          { url: `${this.$store.getters.config.archiveURL}/files/spac`, icon: 'arrow_right', text: 'Browse SPAC Archive', routing: 'remote' },
-          { url: 'http://www.icjia.state.il.us/spac', icon: 'open_in_new', text: 'Visit Website', routing: 'remote' },
+          { url: `${this.$store.getters.config.fileServerURL}/files/spac`, icon: 'arrow_right', text: 'Browse SPAC Archive', routing: 'remote' },
+          { url: 'https://spac.illinois.gov', icon: 'open_in_new', text: 'Visit Website', routing: 'remote' },
         ],
       }
     },

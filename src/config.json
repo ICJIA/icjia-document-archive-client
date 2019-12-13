@@ -1,5 +1,6 @@
 {
   "archiveURL": "https://archive.icjia.cloud",
+  "fileServerURL": "https://archive.icjia-api.cloud",
 
   "search": {
     "shouldSort": true,

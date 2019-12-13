@@ -68,7 +68,7 @@
     methods: {
       getArchiveURL () {
         let path = this.path.replace('root/', '')
-        let url = `https://archive.icjia.cloud/${path}`
+        let url = `https://archive.icjia-api.cloud/${path}`
         window.open(url, '_blank')
       },
     },
