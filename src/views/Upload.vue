@@ -61,11 +61,11 @@
         let directoryTree = await fetchData(
           'https://archive.icjia-api.cloud/directoryTree.json',
         )
-        console.log('directoryTree fetched successfully.')
+        // console.log('directoryTree fetched successfully.')
         this.items.push(directoryTree)
         this.loading = false
       } catch (e) {
-        console.log('directoryTree error: ', e)
+        // console.log('directoryTree error: ', e)
         this.loading = false
       }
     },

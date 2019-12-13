@@ -6,7 +6,7 @@ function upload (formData) {
     const url = `${BASE_URL}/uploadFiles`
     return axios.post(url, formData)
         // get data
-        .then(x => { console.log('response', x); return x.data })
+        .then(x => { return x.data })
 }
 
 export { upload }

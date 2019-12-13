@@ -143,7 +143,10 @@
             agency: 'icjia',
           },
           { name: 'Adult Redeploy Illinois', agency: 'adult-redeploy' },
-          { name: 'Illinois Family Violence Coordinating Councils', agency: 'ifvcc' },
+          {
+            name: 'Illinois Family Violence Coordinating Councils',
+            agency: 'ifvcc',
+          },
           { name: 'Illinois Sentencing Policy Advisory Council', agency: 'spac' },
         ],
       }
@@ -163,7 +166,7 @@
       })
       EventBus.$on('rebuildSearchIndex', async () => {
         await this.getSearchIndex()
-        console.log('search index rebuilt')
+        // console.log('search index rebuilt')
       })
     },
     methods: {
@@ -180,9 +183,9 @@
             this.masterSearchContent,
             this.$store.getters.config.search,
           )
-          console.log('SearchIndex fetched successfully.')
+          // console.log('SearchIndex fetched successfully.')
         } catch (e) {
-          console.log('SearchIndex error: ', e)
+          // console.log('SearchIndex error: ', e)
         }
       },
       getName () {

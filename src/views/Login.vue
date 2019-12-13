@@ -125,7 +125,7 @@
       EventBus.$on('error', msg => {
         this.msg = msg
         this.alert = true
-        console.log('error: ', msg)
+        // console.log('error: ', msg)
       })
     },
     methods: {
@@ -140,12 +140,12 @@
           payload.agency = agency
           this.$store
             .dispatch('login', payload).then(() => this.$router.push('/upload'))
-            .catch(err => console.log(err))
+            .catch()
         }
       },
       logout () {
         this.$store.dispatch('logout').then(res => {
-          console.log(res)
+          // console.log(res)
         })
       },
       reset () {

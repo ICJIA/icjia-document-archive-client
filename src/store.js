@@ -19,19 +19,19 @@ export default new Vuex.Store({
   mutations: {
     SET_APP_READY (state, bool) {
       state.isAppReady = bool
-      console.log('isAppReady: ', bool)
+      // console.log('isAppReady: ', bool)
     },
     SET_CONFIG (state, config) {
       state.config = config
-      console.log('Config loaded')
+      // console.log('Config loaded')
     },
     AUTH_SUCCESS (state, payload) {
       state.jwt = payload.jwt
       state.userMeta = payload.userMeta
-      console.log('logged in')
+      // console.log('logged in')
     },
     AUTH_ERROR (state, err) {
-      console.log(err)
+      // console.log(err)
       let obj = {}
       obj.msg = err.toString()
       EventBus.$emit('error', obj)
@@ -40,7 +40,7 @@ export default new Vuex.Store({
       state.jwt = ''
       state.user = {}
       state.userMeta = ''
-      console.log('logged out')
+      // console.log('logged out')
     },
   },
   actions: {
@@ -51,7 +51,7 @@ export default new Vuex.Store({
         commit('SET_CONFIG', appConfig)
         commit('SET_APP_READY', true)
       } catch (e) {
-        console.log(e)
+        // console.log(e)
         commit('SET_APP_READY', false)
       }
     },
@@ -78,8 +78,8 @@ export default new Vuex.Store({
         .then(response => {
           // Handle success.
 
-          console.log('User profile', response.data.user)
-          console.log('User token', response.data.jwt)
+         // console.log('User profile', response.data.user)
+          // console.log('User token', response.data.jwt)
           const jwt = response.data.jwt
           const userMeta = response.data.user
           localStorage.setItem('jwt', jwt)
