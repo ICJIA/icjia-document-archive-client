@@ -1,0 +1,47 @@
+[[redirects]]
+from = "/files/*"
+to = "https://archive.icjia-api.cloud/files/:splat"
+status = 200
+force = false
+
+[[redirects]]
+from = "/utils/*"
+to = "https://archive.icjia-api.cloud/files/:splat"
+status = 200
+force = false
+
+[[redirects]]
+from = "/check"
+to = "https://archive.icjia-api.cloud/check"
+status = 200
+force = false
+
+[[redirects]]
+from = "/sitemap.xml"
+to = "https://archive.icjia-api.cloud/sitemap.xml"
+status = 200
+force = false
+
+[[redirects]]
+from = "/searchIndex.json"
+to = "https://archive.icjia-api.cloud/searchIndex.json"
+status = 200
+force = false
+
+[[redirects]]
+from = "/directoryTree.json"
+to = "https://archive.icjia-api.cloud/directoryTree.json"
+status = 200
+force = false
+
+[[redirects]]
+from = "/uploadFiles"
+to = "https://archive.icjia-api.cloud/uploadFiles"
+status = 200
+force = false
+
+[[redirects]]
+from = "/*"
+to = "/index.html"
+status = 200
+force = false
