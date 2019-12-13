@@ -26,7 +26,7 @@
             {{ item.name }}
           </span>
         </template>
-        <template v-slot:prepend="{ item, open }">
+        <!-- <template v-slot:prepend="{ item, open }">
           <v-icon
             v-if="item.type==='directory'"
             :id="item.path"
@@ -34,10 +34,9 @@
 
             @click.prevent="getPath(item)"
           >
-            <!-- {{ open ? 'mdi-folder-open' : 'mdi-folder' }} -->
             mdi-folder
           </v-icon>
-        </template>
+        </template> -->
       </v-treeview>
     </v-card>
   </div>
