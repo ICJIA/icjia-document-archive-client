@@ -89,6 +89,14 @@
             ></strong
           >&nbsp;|&nbsp;<strong
             ><a
+              href="https://icjia.illinois.gov/status"
+              target="_blank"
+              class="footer-link"
+              rel="noreferrer"
+              >Status</a
+            >
+          </strong>&nbsp;|&nbsp;<strong
+            ><a
               href="https://github.com/ICJIA/icjia-document-archive-client"
               target="_blank"
               class="footer-link"
