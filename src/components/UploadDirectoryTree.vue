@@ -6,23 +6,15 @@
         :dense="true"
         :items="items"
         activatable
-
         item-key="path"
         open-on-click
         hoverable
       >
         <template v-slot:label="{ item }">
-          <span
-            v-if="item.type==='file'"
-            class="hover"
-          >
+          <span v-if="item.type === 'file'" class="hover">
             <span style="color: #aaa">{{ item.name }}</span>
           </span>
-          <span
-            v-else
-            class="hover"
-            @click.prevent="getPath(item)"
-          >
+          <span v-else class="hover" @click.prevent="getPath(item)">
             {{ item.name }}
           </span>
         </template>
@@ -43,44 +35,43 @@
 </template>
 
 <script>
-  import { EventBus } from '@/event-bus'
-  export default {
-    props: {
-      items: {
-        type: Array,
-        default: () => [],
-      },
-    },
-    data () {
-      return {
-        open: [],
-        tree: [],
-        currentStatus: null,
+import { EventBus } from "@/event-bus";
+export default {
+  props: {
+    items: {
+      type: Array,
+      default: () => []
+    }
+  },
+  data() {
+    return {
+      open: [],
+      tree: [],
+      currentStatus: null
+    };
+  },
+  mounted() {
+    EventBus.$on("currentStatus", currentStatus => {
+      this.currentStatus = currentStatus;
+    });
+  },
+  methods: {
+    getPath(item) {
+      let path = item.path;
+      if (path.substr(-1) !== "/") {
+        path += "/";
       }
-    },
-    mounted () {
-      EventBus.$on('currentStatus', (currentStatus) => {
-        this.currentStatus = currentStatus
-      })
-    },
-    methods: {
-      getPath (item) {
-        let path = item.path
-        if (path.substr(-1) !== '/') {
-          path += '/'
-        }
-        EventBus.$emit('path', path)
-      },
-    },
-
+      EventBus.$emit("path", path);
+    }
   }
+};
 </script>
 
 <style scoped>
 #treeviewBox {
   background: #fafafa;
   width: 100%;
- height: 350px;
+  height: 350px;
 
   overflow: scroll;
 }

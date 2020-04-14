@@ -1,9 +1,5 @@
 <template>
-  <v-footer
-    dark
-    padless
-    class="noprint"
-  >
+  <v-footer dark padless class="noprint">
     <v-card
       flat
       tile
@@ -70,8 +66,8 @@
           alt="Illinois Criminal Justice Information Authority"
           width="85"
           class="mt-4 mb-4"
-        >
-        <br>
+        />
+        <br />
 
         <v-btn
           v-for="icon in icons"
@@ -84,18 +80,21 @@
             {{ icon }}
           </v-icon>
         </v-btn>
-        <br>
+        <br />
         <div style="font-size: 12px">
           {{ new Date().getFullYear() }}
-          <strong><a
-            href="http://www.icjia.state.il.us"
-            class="footer-link"
-          >Illinois Criminal Justice Information Authority</a></strong>&nbsp;|&nbsp;<strong><a
-            href="https://github.com/ICJIA/icjia-document-archive-client"
-            target="_blank"
-            class="footer-link"
-            rel="noreferrer"
-          >Github</a>
+          <strong
+            ><a href="http://www.icjia.state.il.us" class="footer-link"
+              >Illinois Criminal Justice Information Authority</a
+            ></strong
+          >&nbsp;|&nbsp;<strong
+            ><a
+              href="https://github.com/ICJIA/icjia-document-archive-client"
+              target="_blank"
+              class="footer-link"
+              rel="noreferrer"
+              >Github</a
+            >
           </strong>
         </div>
       </v-card-text>
@@ -104,25 +103,23 @@
 </template>
 
 <script>
-  export default {
-    props: {
-      sections: {
-        type: Array,
-        default: () => [],
-      },
-    },
-    data: () => ({
-      icons: ['fab fa-facebook', 'fab fa-twitter'],
-      archiveURL: '',
-    }),
+export default {
+  props: {
+    sections: {
+      type: Array,
+      default: () => []
+    }
+  },
+  data: () => ({
+    icons: ["fab fa-facebook", "fab fa-twitter"],
+    archiveURL: ""
+  }),
 
-    mounted () {
-      this.archiveURL = this.$store.getters.config.archiveURL
-    },
-    methods: {
-
-    },
-  }
+  mounted() {
+    this.archiveURL = this.$store.getters.config.archiveURL;
+  },
+  methods: {}
+};
 </script>
 
 <style>
@@ -136,6 +133,6 @@
 }
 
 .heavy {
-    font-weight: 900 !important;
+  font-weight: 900 !important;
 }
 </style>

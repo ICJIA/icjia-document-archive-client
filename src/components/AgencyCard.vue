@@ -1,8 +1,6 @@
 <template>
   <div>
-    <v-hover
-      v-slot:default="{ hover }"
-    >
+    <v-hover v-slot:default="{ hover }">
       <v-card
         class="mx-auto white mb-8 pb-8"
         :elevation="hover ? 12 : 2"
@@ -11,18 +9,9 @@
         @click="gotoFolder(path)"
       >
         <v-list-item three-line>
-          <div
-            style="width: 150px;"
-            class="hidden-sm-and-down text-center"
-          >
-            <v-list-item-avatar
-              tile
-              :min-width="width"
-              :height="height"
-            >
-              <v-img
-                :src="require(`@/assets/${logo}`)"
-              />
+          <div style="width: 150px;" class="hidden-sm-and-down text-center">
+            <v-list-item-avatar tile :min-width="width" :height="height">
+              <v-img :src="require(`@/assets/${logo}`)" />
             </v-list-item-avatar>
           </div>
           <v-list-item-content>
@@ -40,14 +29,11 @@
           <v-spacer />
 
           <div v-if="buttons.length">
-            <span
-              v-for="(button, index) in buttons"
-              :key="index"
-            >&nbsp;&nbsp;
+            <span v-for="(button, index) in buttons" :key="index"
+              >&nbsp;&nbsp;
               <v-btn
                 v-if="button.routing === 'remote'"
                 :href="button.url"
-
                 small
                 depressed
               >
@@ -56,13 +42,7 @@
                   {{ button.icon }}
                 </v-icon>
               </v-btn>
-              <v-btn
-                v-else
-                :to="`${button.url}`"
-
-                small
-                depressed
-              >
+              <v-btn v-else :to="`${button.url}`" small depressed>
                 {{ button.text }}
                 <v-icon right>
                   {{ button.icon }}
@@ -77,53 +57,49 @@
 </template>
 
 <script>
-  export default {
-    props: {
-      logo: {
-        type: String,
-        default: 'state-seal-color.png',
-      },
-      abbreviation: {
-        type: String,
-        default: '',
-      },
-      title: {
-        type: String,
-        default: 'Title here',
-      },
-      content: {
-        type: String,
-        default: 'Content here',
-      },
-      width: {
-        type: Number,
-        default: 100,
-      },
-      height: {
-        type: Number,
-        default: 100,
-      },
-      path: {
-        type: String,
-        default: '',
-      },
-      buttons: {
-        type: Array,
-        default: () => [],
-      },
+export default {
+  props: {
+    logo: {
+      type: String,
+      default: "state-seal-color.png"
     },
-    mounted () {
-
+    abbreviation: {
+      type: String,
+      default: ""
     },
-    methods: {
-      gotoFolder (path) {
-        // console.log(`${this.$store.getters.config.archiveURL}`)
-        location.href = `${this.$store.getters.config.archiveURL}${path}`
-      },
+    title: {
+      type: String,
+      default: "Title here"
     },
+    content: {
+      type: String,
+      default: "Content here"
+    },
+    width: {
+      type: Number,
+      default: 100
+    },
+    height: {
+      type: Number,
+      default: 100
+    },
+    path: {
+      type: String,
+      default: ""
+    },
+    buttons: {
+      type: Array,
+      default: () => []
+    }
+  },
+  mounted() {},
+  methods: {
+    gotoFolder(path) {
+      // console.log(`${this.$store.getters.config.archiveURL}`)
+      location.href = `${this.$store.getters.config.archiveURL}${path}`;
+    }
   }
+};
 </script>
 
-<style >
-
-</style>
+<style></style>

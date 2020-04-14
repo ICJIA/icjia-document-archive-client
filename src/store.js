@@ -1,107 +1,106 @@
 /* eslint-disable no-console */
-import Vue from 'vue'
-import Vuex from 'vuex'
+import Vue from "vue";
+import Vuex from "vuex";
 // const config = require('@/config.json')
 // const searchContent = require('../public/api/search.json')
-import axios from 'axios'
-import { EventBus } from './event-bus.js'
-Vue.use(Vuex)
+import axios from "axios";
+import { EventBus } from "./event-bus.js";
+Vue.use(Vuex);
 
 export default new Vuex.Store({
   state: {
     config: null,
     isAppReady: false,
-    status: '',
-    jwt: localStorage.getItem('jwt') || '',
-    userMeta: JSON.parse(localStorage.getItem('userMeta')) || '',
-    user: {},
+    status: "",
+    jwt: localStorage.getItem("jwt") || "",
+    userMeta: JSON.parse(localStorage.getItem("userMeta")) || "",
+    user: {}
   },
   mutations: {
-    SET_APP_READY (state, bool) {
-      state.isAppReady = bool
+    SET_APP_READY(state, bool) {
+      state.isAppReady = bool;
       // console.log('isAppReady: ', bool)
     },
-    SET_CONFIG (state, config) {
-      state.config = config
+    SET_CONFIG(state, config) {
+      state.config = config;
       // console.log('Config loaded')
     },
-    AUTH_SUCCESS (state, payload) {
-      state.jwt = payload.jwt
-      state.userMeta = payload.userMeta
+    AUTH_SUCCESS(state, payload) {
+      state.jwt = payload.jwt;
+      state.userMeta = payload.userMeta;
       // console.log('logged in')
     },
-    AUTH_ERROR (state, err) {
+    AUTH_ERROR(state, err) {
       // console.log(err)
-      let obj = {}
-      obj.msg = err.toString()
-      EventBus.$emit('error', obj)
+      let obj = {};
+      obj.msg = err.toString();
+      EventBus.$emit("error", obj);
     },
-    AUTH_LOGOUT (state, err) {
-      state.jwt = ''
-      state.user = {}
-      state.userMeta = ''
+    AUTH_LOGOUT(state, err) {
+      state.jwt = "";
+      state.user = {};
+      state.userMeta = "";
       // console.log('logged out')
-    },
+    }
   },
   actions: {
-
-    async init ({ commit }) {
+    async init({ commit }) {
       try {
-        let appConfig = require('@/config.json')
-        commit('SET_CONFIG', appConfig)
-        commit('SET_APP_READY', true)
+        let appConfig = require("@/config.json");
+        commit("SET_CONFIG", appConfig);
+        commit("SET_APP_READY", true);
       } catch (e) {
         // console.log(e)
-        commit('SET_APP_READY', false)
+        commit("SET_APP_READY", false);
       }
     },
-    logout ({ commit, state }) {
+    logout({ commit, state }) {
       // eslint-disable-next-line no-unused-vars
-        commit('AUTH_LOGOUT')
-        localStorage.removeItem('jwt')
-        localStorage.removeItem('userMeta')
-        delete axios.defaults.headers.common['Authorization']
-        // resolve()
+      commit("AUTH_LOGOUT");
+      localStorage.removeItem("jwt");
+      localStorage.removeItem("userMeta");
+      delete axios.defaults.headers.common["Authorization"];
+      // resolve()
     },
-    async login ({ commit, state }, payload) {
-      let identifier = payload.identifier
-      let password = payload.password
-      let agency = payload.agency
+    async login({ commit, state }, payload) {
+      let identifier = payload.identifier;
+      let password = payload.password;
+      let agency = payload.agency;
 
-      let auth = state.config.auth[agency].url
+      let auth = state.config.auth[agency].url;
       return new Promise((resolve, reject) => {
-       axios
-        .post(auth, {
-          identifier: `${identifier}`,
-          password: `${password}`,
-        })
-        .then(response => {
-          // Handle success.
+        axios
+          .post(auth, {
+            identifier: `${identifier}`,
+            password: `${password}`
+          })
+          .then(response => {
+            // Handle success.
 
-         // console.log('User profile', response.data.user)
-          // console.log('User token', response.data.jwt)
-          const jwt = response.data.jwt
-          const userMeta = response.data.user
-          localStorage.setItem('jwt', jwt)
-          localStorage.setItem('userMeta', JSON.stringify(userMeta))
-          commit('AUTH_SUCCESS', { jwt, userMeta })
-          resolve(response)
-        })
-        .catch(error => {
-          // Handle error.
-          let message = error
-          commit('AUTH_ERROR', message)
-          // console.log('An error occurred:', error)
-          reject(error)
-        })
-      })
-    },
+            // console.log('User profile', response.data.user)
+            // console.log('User token', response.data.jwt)
+            const jwt = response.data.jwt;
+            const userMeta = response.data.user;
+            localStorage.setItem("jwt", jwt);
+            localStorage.setItem("userMeta", JSON.stringify(userMeta));
+            commit("AUTH_SUCCESS", { jwt, userMeta });
+            resolve(response);
+          })
+          .catch(error => {
+            // Handle error.
+            let message = error;
+            commit("AUTH_ERROR", message);
+            // console.log('An error occurred:', error)
+            reject(error);
+          });
+      });
+    }
   },
   getters: {
     isLoggedIn: state => !!state.jwt,
     userMeta: state => state.userMeta,
     config: state => {
-      return state.config
-    },
-  },
-})
+      return state.config;
+    }
+  }
+});

@@ -1,57 +1,56 @@
-import Vue from 'vue'
-import Router from 'vue-router'
-import Home from './views/Home.vue'
-import store from './store.js'
-Vue.use(Router)
+import Vue from "vue";
+import Router from "vue-router";
+import Home from "./views/Home.vue";
+import store from "./store.js";
+Vue.use(Router);
 
 const router = new Router({
-  mode: 'history',
+  mode: "history",
   base: process.env.BASE_URL,
   routes: [
     {
-      path: '/',
-      name: 'home',
-      component: Home,
+      path: "/",
+      name: "home",
+      component: Home
     },
     {
-      path: '/sandbox',
-      name: 'sandbox',
+      path: "/sandbox",
+      name: "sandbox",
       component: () =>
-        import(/* webpackChunkName: "sandbox" */ './views/Sandbox.vue'),
-
+        import(/* webpackChunkName: "sandbox" */ "./views/Sandbox.vue")
     },
 
     {
-      path: '/upload',
-      name: 'upload',
+      path: "/upload",
+      name: "upload",
       component: () =>
-        import(/* webpackChunkName: "upload" */ './views/Upload.vue'),
+        import(/* webpackChunkName: "upload" */ "./views/Upload.vue"),
       meta: {
-        requiresAuth: true,
-      },
+        requiresAuth: true
+      }
     },
-    { path: '/uploadFile', redirect: { name: 'upload' } },
+    { path: "/uploadFile", redirect: { name: "upload" } },
     {
-      path: '/login',
-      name: 'login',
+      path: "/login",
+      name: "login",
       component: () =>
-        import(/* webpackChunkName: "login" */ './views/Login.vue'),
-    },
-  ],
-})
+        import(/* webpackChunkName: "login" */ "./views/Login.vue")
+    }
+  ]
+});
 
 router.beforeEach((to, from, next) => {
-  let jwt = localStorage.getItem('jwt')
+  let jwt = localStorage.getItem("jwt");
   if (to.matched.some(record => record.meta.requiresAuth)) {
     if (store.getters.isLoggedIn && jwt) {
-      next()
-      return
+      next();
+      return;
     }
-    store.dispatch('logout').then(router.push('/login'))
-    next('/login')
+    store.dispatch("logout").then(router.push("/login"));
+    next("/login");
   } else {
-    next()
+    next();
   }
-})
+});
 
-export default router
+export default router;
