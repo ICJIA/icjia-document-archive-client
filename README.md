@@ -1,5 +1,7 @@
 # icjia-document-archive
 
+[![Netlify Status](https://api.netlify.com/api/v1/badges/f93389c6-7593-495f-9309-6a3a9729eb81/deploy-status)](https://app.netlify.com/sites/icjia-archive/deploys)
+
 ## Project setup
 ```
 npm install
