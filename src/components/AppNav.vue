@@ -37,7 +37,7 @@
     <div class="flex-grow-1" />
 
     <v-toolbar-items>
-      <v-btn depressed color="white" to="/upload" class="hidden-sm-and-down">
+      <!--<v-btn depressed color="white" to="/upload" class="hidden-sm-and-down">
         <span
           :class="{
             'hidden-sm-and-down':
@@ -48,7 +48,8 @@
         <v-icon right>
           cloud_upload
         </v-icon>
-      </v-btn>
+      </v-btn>-->
+      
       <v-btn depressed color="white" @click="toggleSearch">
         <span>Search</span>
         <v-icon right>
