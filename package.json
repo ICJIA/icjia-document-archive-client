@@ -1,6 +1,6 @@
 {
   "name": "icjia-document-archive",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "private": true,
   "author": {
     "name": "Illinois Criminal Justice Information Authority",
@@ -15,7 +15,7 @@
     "deploy": "vue-cli-service build",
     "banner": "node generateBuildInfo.js",
     "version": "auto-changelog -p --commit-limit false --sort-commits date && git add CHANGELOG.md",
-    "postbuild": "node generateBuildInfo.js"
+    "postbuild": "node generateBuildInfo.js && npm run version"
   },
   "dependencies": {
     "@mdi/font": "^5.5.55",
