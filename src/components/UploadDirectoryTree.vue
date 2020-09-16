@@ -40,18 +40,18 @@ export default {
   props: {
     items: {
       type: Array,
-      default: () => []
-    }
+      default: () => [],
+    },
   },
   data() {
     return {
       open: [],
       tree: [],
-      currentStatus: null
+      currentStatus: null,
     };
   },
   mounted() {
-    EventBus.$on("currentStatus", currentStatus => {
+    EventBus.$on("currentStatus", (currentStatus) => {
       this.currentStatus = currentStatus;
     });
   },
@@ -62,8 +62,8 @@ export default {
         path += "/";
       }
       EventBus.$emit("path", path);
-    }
-  }
+    },
+  },
 };
 </script>
 

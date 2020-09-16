@@ -79,9 +79,7 @@
       <div class="text-center mt-8">
         <v-btn @click="reset()">
           Upload more
-          <v-icon right>
-            autorenew
-          </v-icon>
+          <v-icon right> autorenew </v-icon>
         </v-btn>
       </div>
     </div>
@@ -95,9 +93,7 @@
         <div class="text-center mt-8">
           <v-btn @click="reset()">
             Try again
-            <v-icon right>
-              cached
-            </v-icon>
+            <v-icon right> cached </v-icon>
           </v-btn>
         </div>
       </div>
@@ -119,7 +115,7 @@ export default {
       path: "root/",
       currentStatus: null,
       uploadFieldName: "files",
-      uploadError: null
+      uploadError: null,
     };
   },
   computed: {
@@ -144,7 +140,7 @@ export default {
     },
     uploadToken() {
       return process.env.VUE_APP_ARCHIVE_SECRET;
-    }
+    },
   },
   watch: {
     uploadPathAllowed(newValue, oldValue) {
@@ -152,11 +148,11 @@ export default {
     },
     currentStatus(newValue, oldValue) {
       EventBus.$emit("currentStatus", newValue);
-    }
+    },
   },
   mounted() {
     this.reset();
-    EventBus.$on("path", path => {
+    EventBus.$on("path", (path) => {
       this.path = path;
     });
     EventBus.$emit("uploadPathAllowed", false);
@@ -171,7 +167,7 @@ export default {
       // this.currentStatus = STATUS_SUCCESS
 
       upload(formData)
-        .then(x => {
+        .then((x) => {
           this.allFiles = x.allFiles;
           this.successfulUploads = x.successfulUploads;
           this.failedUploads = x.failedUploads;
@@ -179,7 +175,7 @@ export default {
           EventBus.$emit("currentStatus", this.currentStatus);
           EventBus.$emit("rebuildSearchIndex");
         })
-        .catch(err => {
+        .catch((err) => {
           this.uploadError = err;
           this.currentStatus = STATUS_FAILED;
           EventBus.$emit("currentStatus", this.currentStatus);
@@ -201,7 +197,7 @@ export default {
       if (!fileList.length) return;
       // console.log(this.$refs.test.value)
       // append the files to FormData
-      Array.from(Array(fileList.length).keys()).map(x => {
+      Array.from(Array(fileList.length).keys()).map((x) => {
         formData.append(fieldName, fileList[x], fileList[x].name);
       });
       formData.append("path", this.$refs.path.value);
@@ -209,8 +205,8 @@ export default {
       // save it
       // console.log([...formData])
       this.save(formData);
-    }
-  }
+    },
+  },
 };
 </script>
 

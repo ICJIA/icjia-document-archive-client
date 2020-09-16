@@ -47,7 +47,7 @@ import AgencyCard from "@/components/AgencyCard";
 
 export default {
   components: {
-    AgencyCard
+    AgencyCard,
   },
   data() {
     return {
@@ -64,58 +64,58 @@ export default {
           url: `${this.$store.getters.config.fileServerURL}/files/adult-redeploy`,
           icon: "arrow_right",
           text: "Browse ARI Archive",
-          routing: "remote"
+          routing: "remote",
         },
         {
           url: "https://icjia.illinois.gov/adultredeploy",
           icon: "open_in_new",
           text: "Visit Website",
-          routing: "remote"
-        }
+          routing: "remote",
+        },
       ],
       icjiaButtons: [
         {
           url: `${this.$store.getters.config.fileServerURL}/files/icjia`,
           icon: "arrow_right",
           text: "Browse ICJIA Archive",
-          routing: "remote"
+          routing: "remote",
         },
         {
           url: "http://www.icjia.state.il.us",
           icon: "open_in_new",
           text: "Visit Website",
-          routing: "remote"
-        }
+          routing: "remote",
+        },
       ],
       ifvccButtons: [
         {
           url: `${this.$store.getters.config.fileServerURL}/files/ifvcc`,
           icon: "arrow_right",
           text: "Browse IFVCC Archive",
-          routing: "remote"
+          routing: "remote",
         },
         {
           url: "http://www.icjia.state.il.us/ifvcc",
           icon: "open_in_new",
           text: "Visit Website",
-          routing: "remote"
-        }
+          routing: "remote",
+        },
       ],
       spacButtons: [
         {
           url: `${this.$store.getters.config.fileServerURL}/files/spac`,
           icon: "arrow_right",
           text: "Browse SPAC Archive",
-          routing: "remote"
+          routing: "remote",
         },
         {
           url: "https://spac.illinois.gov",
           icon: "open_in_new",
           text: "Visit Website",
-          routing: "remote"
-        }
-      ]
+          routing: "remote",
+        },
+      ],
     };
-  }
+  },
 };
 </script>

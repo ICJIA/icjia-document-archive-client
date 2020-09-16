@@ -1,10 +1,10 @@
 <template>
-  <div style="background: #eee;" class="elevation-1">
+  <div style="background: #eee" class="elevation-1">
     <v-container fluid>
       <v-row>
         <v-col cols="6">
           <span v-if="uploadPathAllowed">
-            <v-icon style="color: green;">cloud_upload</v-icon>
+            <v-icon style="color: green">cloud_upload</v-icon>
           </span>
           <span v-else>
             <v-icon style="color: red">cloud_off</v-icon>
@@ -19,9 +19,7 @@
           <div class="text-right">
             <v-btn @click="getArchiveURL()">
               Browse at current path
-              <v-icon right>
-                open_in_new
-              </v-icon>
+              <v-icon right> open_in_new </v-icon>
             </v-btn>
           </div>
         </v-col>
@@ -38,17 +36,17 @@ export default {
     return {
       path: "root/",
       uploadPathAllowed: false,
-      currentStatus: null
+      currentStatus: null,
     };
   },
   mounted() {
-    EventBus.$on("path", path => {
+    EventBus.$on("path", (path) => {
       this.path = path;
     });
-    EventBus.$on("uploadPathAllowed", bool => {
+    EventBus.$on("uploadPathAllowed", (bool) => {
       this.uploadPathAllowed = bool;
     });
-    EventBus.$on("currentStatus", currentStatus => {
+    EventBus.$on("currentStatus", (currentStatus) => {
       this.currentStatus = currentStatus;
     });
   },
@@ -57,8 +55,8 @@ export default {
       let path = this.path.replace("root/", "");
       let url = `https://archive.icjia-api.cloud/${path}`;
       window.open(url, "_blank");
-    }
-  }
+    },
+  },
 };
 </script>
 

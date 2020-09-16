@@ -40,11 +40,11 @@ export default {
   components: {
     UploadPathDisplay,
     UploadDirectoryTree,
-    UploadFiles
+    UploadFiles,
   },
   data: () => ({
     loading: true,
-    items: []
+    items: [],
   }),
 
   watch: {},
@@ -62,7 +62,7 @@ export default {
       // console.log('directoryTree error: ', e)
       this.loading = false;
     }
-  }
+  },
 };
 </script>
 

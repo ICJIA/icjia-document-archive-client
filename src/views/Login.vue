@@ -4,7 +4,7 @@
       <v-col>
         <v-card
           class="mx-auto mt-12 mb-12 py-10 px-10"
-          style="max-width: 500px;"
+          style="max-width: 500px"
         >
           <v-form ref="form" v-model="valid" lazy-validation>
             <v-text-field
@@ -52,7 +52,7 @@
               outlined
               type="error"
               class="mt-5"
-              style="max-width: 500px; color: red !important;"
+              style="max-width: 500px; color: red !important"
             >
               {{ msg }}
             </v-alert>
@@ -62,14 +62,9 @@
     </v-container>
     <v-container v-else>
       <v-col>
-        <v-card
-          class="mx-auto mt-12 py-3 text-center"
-          style="max-width: 500px;"
-        >
+        <v-card class="mx-auto mt-12 py-3 text-center" style="max-width: 500px">
           <v-card-text>You're already logged in.</v-card-text>
-          <v-btn dark color="blue" @click="logout">
-            Logout
-          </v-btn>
+          <v-btn dark color="blue" @click="logout"> Logout </v-btn>
           <div class="mt-12">
             <router-link to="/upload">
               Go to file upload&nbsp;&raquo;
@@ -91,16 +86,16 @@ export default {
     msg: "",
     username: "",
     items: ["adult-redeploy", "spac"],
-    usernameRules: [v => !!v || "Username is required"],
+    usernameRules: [(v) => !!v || "Username is required"],
     password: "",
-    passwordRules: [v => !!v || "Password is required"],
+    passwordRules: [(v) => !!v || "Password is required"],
     agency: "",
-    agencyRules: [v => !!v || "Agency is required"],
+    agencyRules: [(v) => !!v || "Agency is required"],
 
-    select: null
+    select: null,
   }),
   mounted() {
-    EventBus.$on("error", msg => {
+    EventBus.$on("error", (msg) => {
       this.msg = msg;
       this.alert = true;
       // console.log('error: ', msg)
@@ -123,7 +118,7 @@ export default {
       }
     },
     logout() {
-      this.$store.dispatch("logout").then(res => {
+      this.$store.dispatch("logout").then((res) => {
         // console.log(res)
       });
     },
@@ -131,7 +126,7 @@ export default {
       this.$refs.form.reset();
       this.alert = false;
       this.msg = "";
-    }
-  }
+    },
+  },
 };
 </script>

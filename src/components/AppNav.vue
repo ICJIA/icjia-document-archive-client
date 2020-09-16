@@ -6,10 +6,10 @@
       src="@/assets/icjia-logo.png"
       alt="Illinois Criminal Justice Information Authority"
       :width="logoWidth()"
-      style="margin-left: -5px; margin-right: 8px;"
+      style="margin-left: -5px; margin-right: 8px"
       class="hover"
       @click="
-        $router.push('/').catch(err => {
+        $router.push('/').catch((err) => {
           $vuetify.goTo(0);
         })
       "
@@ -17,7 +17,7 @@
     <v-toolbar-title
       class="heavy hover"
       @click="
-        $router.push('/').catch(err => {
+        $router.push('/').catch((err) => {
           $vuetify.goTo(0);
         })
       "
@@ -26,7 +26,7 @@
         ><span
           :class="{
             'hidden-sm-and-down':
-              $vuetify.breakpoint.xs || $vuetify.breakpoint.sm
+              $vuetify.breakpoint.xs || $vuetify.breakpoint.sm,
           }"
           >DOCUMENT</span
         >
@@ -49,12 +49,10 @@
           cloud_upload
         </v-icon>
       </v-btn>-->
-      
+
       <v-btn depressed color="white" @click="toggleSearch">
         <span>Search</span>
-        <v-icon right>
-          search
-        </v-icon>
+        <v-icon right> search </v-icon>
       </v-btn>
 
       <v-btn
@@ -66,7 +64,7 @@
         <span
           :class="{
             'hidden-sm-and-down':
-              $vuetify.breakpoint.xs || $vuetify.breakpoint.sm
+              $vuetify.breakpoint.xs || $vuetify.breakpoint.sm,
           }"
           style="color: blue"
           >LOGOUT</span
@@ -96,7 +94,7 @@ export default {
       } else {
         return 90;
       }
-    }
-  }
+    },
+  },
 };
 </script>

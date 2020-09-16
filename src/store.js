@@ -14,7 +14,7 @@ export default new Vuex.Store({
     status: "",
     jwt: localStorage.getItem("jwt") || "",
     userMeta: JSON.parse(localStorage.getItem("userMeta")) || "",
-    user: {}
+    user: {},
   },
   mutations: {
     SET_APP_READY(state, bool) {
@@ -41,7 +41,7 @@ export default new Vuex.Store({
       state.user = {};
       state.userMeta = "";
       // console.log('logged out')
-    }
+    },
   },
   actions: {
     async init({ commit }) {
@@ -72,9 +72,9 @@ export default new Vuex.Store({
         axios
           .post(auth, {
             identifier: `${identifier}`,
-            password: `${password}`
+            password: `${password}`,
           })
-          .then(response => {
+          .then((response) => {
             // Handle success.
 
             // console.log('User profile', response.data.user)
@@ -86,7 +86,7 @@ export default new Vuex.Store({
             commit("AUTH_SUCCESS", { jwt, userMeta });
             resolve(response);
           })
-          .catch(error => {
+          .catch((error) => {
             // Handle error.
             let message = error;
             commit("AUTH_ERROR", message);
@@ -94,13 +94,13 @@ export default new Vuex.Store({
             reject(error);
           });
       });
-    }
+    },
   },
   getters: {
-    isLoggedIn: state => !!state.jwt,
-    userMeta: state => state.userMeta,
-    config: state => {
+    isLoggedIn: (state) => !!state.jwt,
+    userMeta: (state) => state.userMeta,
+    config: (state) => {
       return state.config;
-    }
-  }
+    },
+  },
 });

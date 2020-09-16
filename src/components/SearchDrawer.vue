@@ -18,9 +18,7 @@
                 dark
                 @click="closeDrawer()"
               >
-                CLOSE<v-icon right>
-                  close
-                </v-icon>
+                CLOSE<v-icon right> close </v-icon>
               </v-btn>
             </div>
             <v-card class="grey lighten-4">
@@ -29,11 +27,11 @@
                   Filter results by agency:
                   <br />
 
-                  <span style="font-weight: 900; color: #0C4473">{{
+                  <span style="font-weight: 900; color: #0c4473">{{
                     getName()
                   }}</span>
 
-                  <v-radio-group v-model="agency" row class="mb-5 ">
+                  <v-radio-group v-model="agency" row class="mb-5">
                     <v-radio label="All" value="all" />
                     <v-radio label="ARI" value="adult-redeploy" />
                     <v-radio label="ICJIA" value="icjia" />
@@ -72,12 +70,12 @@
                 class="dont-break-out name"
                 >{{ item.name }}</a
               >
-              <span style="font-size: 12px; color: #666;"
+              <span style="font-size: 12px; color: #666"
                 >&nbsp;({{ formatBytes(item.stats.size) }})</span
               >
               <div
                 style="font-size: 12px; font-weight: bold"
-                class="dont-break-out "
+                class="dont-break-out"
               >
                 <a :href="`${item.parent}`" class="path" target="_blank">
                   {{ removeFilename(item.path, item.name) }}
@@ -115,22 +113,22 @@ export default {
       agencyMap: [
         {
           name: "Illinois Criminal Justice Information Authority",
-          agency: "icjia"
+          agency: "icjia",
         },
         { name: "Adult Redeploy Illinois", agency: "adult-redeploy" },
         {
           name: "Illinois Family Violence Coordinating Councils",
-          agency: "ifvcc"
+          agency: "ifvcc",
         },
-        { name: "Illinois Sentencing Policy Advisory Council", agency: "spac" }
-      ]
+        { name: "Illinois Sentencing Policy Advisory Council", agency: "spac" },
+      ],
     };
   },
   watch: {
     agency(newValue, oldValue) {
       // this.queryResults = []
       this.filter(newValue);
-    }
+    },
   },
   async created() {
     await this.getSearchIndex();
@@ -168,7 +166,7 @@ export default {
         return "All Agencies";
       }
 
-      let agency = this.agencyMap.filter(item => {
+      let agency = this.agencyMap.filter((item) => {
         if (item.agency === this.agency) {
           return item;
         }
@@ -209,7 +207,7 @@ export default {
         );
         this.instantSearch();
       } else {
-        let filteredSearchContent = this.masterSearchContent.filter(item => {
+        let filteredSearchContent = this.masterSearchContent.filter((item) => {
           return item.agency === agency;
         });
         this.fuse = new Fuse(
@@ -227,8 +225,8 @@ export default {
         .slice(0, this.$store.getters.config.maxSearchResults);
       this.hasSearched = true;
       // console.log(this.fuse.search(this.query))
-    }
-  }
+    },
+  },
 };
 </script>
 

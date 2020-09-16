@@ -11,13 +11,13 @@ const router = new Router({
     {
       path: "/",
       name: "home",
-      component: Home
+      component: Home,
     },
     {
       path: "/sandbox",
       name: "sandbox",
       component: () =>
-        import(/* webpackChunkName: "sandbox" */ "./views/Sandbox.vue")
+        import(/* webpackChunkName: "sandbox" */ "./views/Sandbox.vue"),
     },
 
     {
@@ -26,22 +26,22 @@ const router = new Router({
       component: () =>
         import(/* webpackChunkName: "upload" */ "./views/Upload.vue"),
       meta: {
-        requiresAuth: true
-      }
+        requiresAuth: true,
+      },
     },
     { path: "/uploadFile", redirect: { name: "upload" } },
     {
       path: "/login",
       name: "login",
       component: () =>
-        import(/* webpackChunkName: "login" */ "./views/Login.vue")
-    }
-  ]
+        import(/* webpackChunkName: "login" */ "./views/Login.vue"),
+    },
+  ],
 });
 
 router.beforeEach((to, from, next) => {
   let jwt = localStorage.getItem("jwt");
-  if (to.matched.some(record => record.meta.requiresAuth)) {
+  if (to.matched.some((record) => record.meta.requiresAuth)) {
     if (store.getters.isLoggedIn && jwt) {
       next();
       return;

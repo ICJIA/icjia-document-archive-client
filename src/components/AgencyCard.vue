@@ -9,7 +9,7 @@
         @click="gotoFolder(path)"
       >
         <v-list-item three-line>
-          <div style="width: 150px;" class="hidden-sm-and-down text-center">
+          <div style="width: 150px" class="hidden-sm-and-down text-center">
             <v-list-item-avatar tile :min-width="width" :height="height">
               <v-img :src="require(`@/assets/${logo}`)" />
             </v-list-item-avatar>
@@ -61,44 +61,44 @@ export default {
   props: {
     logo: {
       type: String,
-      default: "state-seal-color.png"
+      default: "state-seal-color.png",
     },
     abbreviation: {
       type: String,
-      default: ""
+      default: "",
     },
     title: {
       type: String,
-      default: "Title here"
+      default: "Title here",
     },
     content: {
       type: String,
-      default: "Content here"
+      default: "Content here",
     },
     width: {
       type: Number,
-      default: 100
+      default: 100,
     },
     height: {
       type: Number,
-      default: 100
+      default: 100,
     },
     path: {
       type: String,
-      default: ""
+      default: "",
     },
     buttons: {
       type: Array,
-      default: () => []
-    }
+      default: () => [],
+    },
   },
   mounted() {},
   methods: {
     gotoFolder(path) {
       // console.log(`${this.$store.getters.config.archiveURL}`)
       location.href = `${this.$store.getters.config.archiveURL}${path}`;
-    }
-  }
+    },
+  },
 };
 </script>
 

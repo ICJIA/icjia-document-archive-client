@@ -1,7 +1,5 @@
 <template>
-  <div>
-    sandbox here
-  </div>
+  <div>sandbox here</div>
 </template>
 
 <script>

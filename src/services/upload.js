@@ -8,7 +8,7 @@ function upload(formData) {
     axios
       .post(url, formData)
       // get data
-      .then(x => {
+      .then((x) => {
         return x.data;
       })
   );

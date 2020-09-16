@@ -11,7 +11,7 @@
         <v-btn
           :href="`${archiveURL}/files/adult-redeploy`"
           depressed
-          class="heavy "
+          class="heavy"
           dark
           color="secondary"
           aria-label="ARI archive"
@@ -22,7 +22,7 @@
         <v-btn
           :href="`${archiveURL}/files/icjia`"
           depressed
-          class="heavy "
+          class="heavy"
           dark
           color="secondary"
           aria-label="ICJIA archive"
@@ -32,7 +32,7 @@
         <v-btn
           :href="`${archiveURL}/files/ifvcc`"
           depressed
-          class="heavy "
+          class="heavy"
           dark
           color="secondary"
           aria-label="IFVCC archive"
@@ -42,7 +42,7 @@
         <v-btn
           :href="`${archiveURL}/files/spac`"
           depressed
-          class="heavy "
+          class="heavy"
           dark
           color="secondary"
           aria-label="SPAC archive"
@@ -94,8 +94,8 @@
               class="footer-link"
               rel="noreferrer"
               >Status</a
-            >
-          </strong>&nbsp;|&nbsp;<strong
+            > </strong
+          >&nbsp;|&nbsp;<strong
             ><a
               href="https://github.com/ICJIA/icjia-document-archive-client"
               target="_blank"
@@ -115,18 +115,18 @@ export default {
   props: {
     sections: {
       type: Array,
-      default: () => []
-    }
+      default: () => [],
+    },
   },
   data: () => ({
     icons: ["fab fa-facebook", "fab fa-twitter"],
-    archiveURL: ""
+    archiveURL: "",
   }),
 
   mounted() {
     this.archiveURL = this.$store.getters.config.archiveURL;
   },
-  methods: {}
+  methods: {},
 };
 </script>
 

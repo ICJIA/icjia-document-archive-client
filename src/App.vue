@@ -2,10 +2,10 @@
   <v-app>
     <app-nav />
     <search-drawer />
-    <v-content>
+    <v-main>
       <corona ref="alert" />
       <router-view />
-    </v-content>
+    </v-main>
     <app-footer />
   </v-app>
 </template>

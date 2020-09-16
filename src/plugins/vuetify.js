@@ -7,7 +7,7 @@ Vue.use(Vuetify);
 
 export default new Vuetify({
   icons: {
-    iconfont: "mdi" // default - only for display purposes
+    iconfont: "mdi", // default - only for display purposes
   },
   theme: {
     themes: {
@@ -18,8 +18,8 @@ export default new Vuetify({
         error: "#e91e63",
         warning: "#ffc107",
         info: "#03a9f4",
-        success: "#4caf50"
-      }
-    }
-  }
+        success: "#4caf50",
+      },
+    },
+  },
 });
