@@ -4,13 +4,13 @@
       <v-row>
         <v-col cols="12">
           <agency-card
-            path="/files/adult-redeploy"
+            path="https://archive.icjia-api.cloud/files/adult-redeploy"
             title="Adult Redeploy Illinois"
             :content="ariContent"
             :buttons="ariButtons"
           />
           <agency-card
-            path="/files/icjia"
+            path="https://archive.icjia-api.cloud/files/icjia"
             title="Illinois Criminal Justice Information Authority"
             logo="icjia-logo-125.png"
             :width="125"
@@ -19,7 +19,7 @@
             :buttons="icjiaButtons"
           />
           <agency-card
-            path="/files/ifvcc"
+            path="https://archive.icjia-api.cloud/files/ifvcc/"
             title="Illinois Family Violence Coordinating Councils"
             logo="ifvcc-logo-purple.png"
             :width="125"
@@ -28,7 +28,7 @@
             :buttons="ifvccButtons"
           />
           <agency-card
-            path="/files/spac"
+            path="https://archive.icjia-api.cloud/files/spac/"
             title="Illinois Sentencing Policy and Advisory Council"
             logo="spac-default.png"
             :width="66"

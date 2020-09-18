@@ -85,7 +85,7 @@ export default {
     },
     path: {
       type: String,
-      default: "",
+      default: "https://archive.icjia.cloud/files/",
     },
     buttons: {
       type: Array,
@@ -96,7 +96,7 @@ export default {
   methods: {
     gotoFolder(path) {
       // console.log(`${this.$store.getters.config.archiveURL}`)
-      location.href = `${this.$store.getters.config.archiveURL}${path}`;
+      location.href = `${path}`;
     },
   },
 };
