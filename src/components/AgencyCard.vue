@@ -34,7 +34,7 @@
               <v-btn
                 v-if="button.routing === 'remote'"
                 :href="button.url"
-                small
+                x-small
                 depressed
               >
                 {{ button.text }}
@@ -42,7 +42,7 @@
                   {{ button.icon }}
                 </v-icon>
               </v-btn>
-              <v-btn v-else :to="`${button.url}`" small depressed>
+              <v-btn v-else :to="`${button.url}`" x-small depressed>
                 {{ button.text }}
                 <v-icon right>
                   {{ button.icon }}

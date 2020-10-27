@@ -63,13 +63,13 @@ export default {
         {
           url: `${this.$store.getters.config.fileServerURL}/files/adult-redeploy`,
           icon: "arrow_right",
-          text: "Browse ARI Archive",
+          text: "Archive",
           routing: "remote",
         },
         {
           url: "https://icjia.illinois.gov/adultredeploy",
           icon: "open_in_new",
-          text: "Visit Website",
+          text: "Site",
           routing: "remote",
         },
       ],
@@ -77,13 +77,13 @@ export default {
         {
           url: `${this.$store.getters.config.fileServerURL}/files/icjia`,
           icon: "arrow_right",
-          text: "Browse ICJIA Archive",
+          text: "Archive",
           routing: "remote",
         },
         {
           url: "http://www.icjia.state.il.us",
           icon: "open_in_new",
-          text: "Visit Website",
+          text: "Site",
           routing: "remote",
         },
       ],
@@ -91,13 +91,13 @@ export default {
         {
           url: `${this.$store.getters.config.fileServerURL}/files/ifvcc`,
           icon: "arrow_right",
-          text: "Browse IFVCC Archive",
+          text: "Archive",
           routing: "remote",
         },
         {
           url: "http://www.icjia.state.il.us/ifvcc",
           icon: "open_in_new",
-          text: "Visit Website",
+          text: "Site",
           routing: "remote",
         },
       ],
@@ -105,13 +105,13 @@ export default {
         {
           url: `${this.$store.getters.config.fileServerURL}/files/spac`,
           icon: "arrow_right",
-          text: "Browse SPAC Archive",
+          text: "Archive",
           routing: "remote",
         },
         {
           url: "https://spac.illinois.gov",
           icon: "open_in_new",
-          text: "Visit Website",
+          text: "Site",
           routing: "remote",
         },
       ],
