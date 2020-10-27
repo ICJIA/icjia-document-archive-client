@@ -38,13 +38,13 @@
                 depressed
               >
                 {{ button.text }}
-                <v-icon right>
+                <v-icon right x-small>
                   {{ button.icon }}
                 </v-icon>
               </v-btn>
               <v-btn v-else :to="`${button.url}`" x-small depressed>
                 {{ button.text }}
-                <v-icon right>
+                <v-icon right x-small>
                   {{ button.icon }}
                 </v-icon>
               </v-btn>

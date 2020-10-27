@@ -15,7 +15,7 @@
     "deploy": "vue-cli-service build",
     "banner": "node generateBuildInfo.js",
     "version": "auto-changelog -p --commit-limit false --sort-commits date && git add CHANGELOG.md",
-    "postbuild": "node generateBuildInfo.js && npm run version"
+    "postbuild": "node generateBuildInfo.js"
   },
   "dependencies": {
     "@mdi/font": "^5.8.55",
